@@ -6,14 +6,14 @@ Elasticsearch Docker image including Shield and Marvel plugins
 ### How To Use
 ##### docker engine
 ```
-docker run -d -p 9200:9200 -p 9300:9300 -e admin=changeme -e admin_pwd=changeme  Khezen/elasticseach-shield:latest   
+docker run -d -p 9200:9200 -p 9300:9300 -e admin=changeme -e admin_pwd=changeme  Khezen/elasticseach:latest   
 ```   
 ##### docker-compose
 ```
 version: '2'
 services:
     elasticseach:
-        build: ..
+        image: Khezen/elastisearch:2.4
         environment:
             - "admin:admin"
             - "admin_pwd:changeme"
