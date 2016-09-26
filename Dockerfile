@@ -8,7 +8,8 @@ COPY config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 RUN bin/plugin install license && \
     bin/plugin install shield --batch && \
     bin/plugin install marvel-agent --batch && \
-    bin/plugin install watcher --batch
+    bin/plugin install watcher --batch && \
+    bin/plugin install graph
 
 # Add roles
 COPY config/roles.yml /elasticsearch/config/shield/
