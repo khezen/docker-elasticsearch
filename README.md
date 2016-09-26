@@ -79,7 +79,7 @@ Logstash user. See roles section to see his permissions.
 Logstash password
 
 #### Marvel
-[configure marvel to use shield](https://www.elastic.co/guide/en/shield/current/marvel.html)
+[configure marvel](https://www.elastic.co/guide/en/marvel/current/configuration.html)
 
 ##### marvel_user | *marvel*
 Marvel user. See roles section to see his permissions.
@@ -94,6 +94,7 @@ Remote marvel agent user. See roles section to see his permissions.
 Remote marvel agent password
 
 #### Watcher
+[configure watcher](https://www.elastic.co/guide/en/watcher/current/email-services.html)
 
 ##### watcher_admin | *watcher-admin*
 Watcher admin user. See roles section to see his permissions.
