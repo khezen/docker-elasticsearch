@@ -6,7 +6,8 @@ COPY config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
 ## install shield
 RUN bin/plugin install license && \
-    bin/plugin install shield
+    bin/plugin install shield && \
+    bin/plugin install marvel-agent
 # Add roles
 COPY config/roles.yml /elasticsearch/config/shield/
 
