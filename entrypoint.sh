@@ -30,8 +30,8 @@ if [ "$marvel_user" != "" ]; then
     /usr/share/elasticsearch/bin/shield/esusers useradd $marvel_user -p $marvel_pwd -r marvel_user
 fi
 
-if [ "$remote_marvel_agent" != "" ]; then
-    /usr/share/elasticsearch/bin/shield/esusers useradd $remote_marvel_agent -p $remote_marvel_agent_pwd -r remote_marvel_agent
+if [ "$watcher_admin" != "" ]; then
+    /usr/share/elasticsearch/bin/shield/esusers useradd $watcher_admin -p $watcher_admin_pwd -r watcher_admin
 fi
 
 
