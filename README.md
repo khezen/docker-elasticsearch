@@ -1,5 +1,5 @@
-## docker-elasticseach-shield
-Elasticsearch Docker image including Shield plugin 
+## docker-elasticseach
+Elasticsearch Docker image including Shield and Marvel plugins 
 
 #
 
