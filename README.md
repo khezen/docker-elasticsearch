@@ -57,7 +57,7 @@ User password
 #### Kibana
 [configure kibana to use shield](https://www.elastic.co/guide/en/shield/current/kibana.html)
 
-##### kibana_server | *kibana4-server*
+##### kibana_server | *kibana-server*
 Kibana server user. See roles section to see his permissions.
 
 ##### kibana_server_pwd | *changeme*

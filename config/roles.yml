@@ -30,8 +30,8 @@ transport_client:
   cluster:
       - transport_client
 
-# The required permissions for the kibana 4 server
-kibana4_server:
+# The required permissions for the kibana server
+kibana_server:
   cluster:
       - monitor
   indices:

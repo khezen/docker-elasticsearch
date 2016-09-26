@@ -15,7 +15,7 @@ if [ "$user" != "" ]; then
 fi
 
 if [ "$kibana_server" != "" ]; then
-    /usr/share/elasticsearch/bin/shield/esusers useradd $kibana_server -p $kibana_server_pwd -r kibana4_server
+    /usr/share/elasticsearch/bin/shield/esusers useradd $kibana_server -p $kibana_server_pwd -r kibana_server
 fi
 
 if [ "$kibana_user" != "" ]; then
