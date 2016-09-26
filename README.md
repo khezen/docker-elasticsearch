@@ -1,5 +1,5 @@
 ## docker-elasticseach
-Elasticsearch Docker image including Shield, Watcher and Marvel plugins 
+Elasticsearch Docker image including Shield, Watcher, Graph and Marvel plugins 
 
 #
 
