@@ -28,7 +28,9 @@ ENV admin="admin" \
     marvel_user="marvel" \
     marvel_pwd="changeme" \
     remote_marvel_agent="marvel-agent" \
-    remote_marvel_agent_pwd="changeme"
+    remote_marvel_agent_pwd="changeme" \
+    watcher_admin="watcher-admin" \
+    watcher_admin_pwd="changeme"
 
 ADD ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

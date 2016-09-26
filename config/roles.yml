@@ -79,3 +79,10 @@ remote_marvel_agent:
   indices:
     - names: '.marvel-es-*'
       privileges: [ "all" ]
+
+# Watcher admin role.
+watcher_admin:
+  cluster: [ "monitor", "manage" ]
+  indices:
+    - names: [ ".watches", ".triggered_watches" ,".watcher-history*" ]
+      privileges: [ "all" ]

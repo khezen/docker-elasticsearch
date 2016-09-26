@@ -93,6 +93,14 @@ Remote marvel agent user. See roles section to see his permissions.
 ##### remote_marvel_agent_pwd | *changeme*
 Remote marvel agent password
 
+#### Watcher
+
+##### watcher_admin | *watcher-admin*
+Watcher admin user. See roles section to see his permissions.
+
+##### watcher_admin_pwd | *changeme*
+Watcher admin password
+
 #
 
 ### Roles
@@ -178,6 +186,13 @@ remote_marvel_agent:
   cluster: [ "manage_index_templates" ]
   indices:
     - names: '.marvel-es-*'
+      privileges: [ "all" ]
+
+# Watcher admin role.
+watcher_admin:
+  cluster: [ "monitor", "manage" ]
+  indices:
+    - names: [ ".watches", ".triggered_watches" ,".watcher-history*" ]
       privileges: [ "all" ]
 ```
 
