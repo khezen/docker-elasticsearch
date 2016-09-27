@@ -4,12 +4,8 @@ MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 
 COPY config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
-## install shield
-RUN bin/plugin install license && \
-    bin/plugin install shield --batch && \
-    bin/plugin install marvel-agent --batch && \
-    bin/plugin install watcher --batch && \
-    bin/plugin install graph
+## install modules
+RUN bin/elasticsearch-plugin install x-pack --batch
 
 # Add roles
 COPY config/roles.yml /elasticsearch/config/shield/
