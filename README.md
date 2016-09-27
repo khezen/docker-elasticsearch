@@ -3,7 +3,6 @@ Elasticsearch Docker image including Shield, Watcher, Graph and Marvel plugins
 
 * `2.4.0`, `2.4`, `2`, `latest`
 * `5.0.0-alpha`, `5.0`, `5`
-#
 
 ### How To Use
 ##### docker engine
@@ -32,7 +31,6 @@ services:
         restart: always
 
 ```
-#
 
 ### Environment Variables
 
@@ -104,7 +102,6 @@ Watcher admin user. See roles section to see his permissions.
 ##### watcher_admin_pwd | *changeme*
 Watcher admin password
 
-#
 
 ### Roles
 
