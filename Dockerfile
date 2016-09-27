@@ -4,7 +4,7 @@ MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 
 COPY config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
-## install shield
+## install modules
 RUN bin/plugin install license && \
     bin/plugin install shield --batch && \
     bin/plugin install marvel-agent --batch && \
