@@ -1,4 +1,4 @@
-FROM elasticsearch:2.4
+FROM elasticsearch:5.0
 
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 
