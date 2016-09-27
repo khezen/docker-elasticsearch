@@ -1,6 +1,8 @@
 ## docker-elasticseach
 Elasticsearch Docker image including Shield, Watcher, Graph and Marvel plugins 
 
+* `2.4.0`, `2.4`, `2`, `latest`
+* `5.0.0-alpha`, `5.0`, `5`
 #
 
 ### How To Use
