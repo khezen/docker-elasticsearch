@@ -1,4 +1,4 @@
-## docker-elasticseach
+## docker-elasticsearch
 Elasticsearch Docker image including Shield, Watcher, Graph and Marvel plugins 
 
 * `2.4.0`, `2.4`, `2`, `latest` [(2.4/Dockerfile)](https://github.com/Khezen/docker-elasticseach/blob/2.4/Dockerfile)
