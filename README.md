@@ -14,21 +14,22 @@ docker run -d -p 9200:9200 -p 9300:9300 -e admin=changeme -e admin_pwd=changeme 
 version: '2'
 services:
     elasticseach:
-        image: Khezen/elasticsearch:2.4
+        build: ..
         environment:
-            - "admin:admin"
-            - "admin_pwd:changeme"
-            - "kibana_server:kibana4-server"
-            - "kibana_server_pwd:changeme"
-            - "kibana_user:kibana"
-            - "kibana_pwd:changeme"
-            - "logstash_user:logstash"
-            - "logstash_pwd:changeme"
+            - admin=admin
+            - admin_pwd=changeme
+            - kibana_server=kibana-server
+            - kibana_server_pwd=changeme
+            - kibana_user=kibana
+            - kibana_pwd=changeme
+            - logstash_user=logstash
+            - logstash_pwd=changeme
         ports:
              - "9200:9200"
              - "9300:9300"
         network_mode: bridge
         restart: always
+
 
 ```
 

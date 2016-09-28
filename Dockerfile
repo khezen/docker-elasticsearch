@@ -7,7 +7,6 @@ COPY config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 ## install modules
 RUN bin/elasticsearch-plugin install x-pack --batch
 
-
 # Add roles
 COPY config/roles.yml /elasticsearch/config/shield/
 
