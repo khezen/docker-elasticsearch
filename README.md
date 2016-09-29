@@ -1,41 +1,38 @@
-## docker-elasticsearch
-Elasticsearch Docker image including Shield, Watcher, Graph and Marvel plugins 
+# Supported tags and respective `Dockerfile` links
 
 * `2.4.0`, `2.4`, `2`, `latest` [(2.4/Dockerfile)](https://github.com/Khezen/docker-elasticseach/blob/2.4/Dockerfile)
 * `5.0.0-alpha`, `5.0`, `5` [(5.0/Dockerfile)](https://github.com/Khezen/docker-elasticseach/blob/5.0/Dockerfile)
 
-### How To Use
-##### docker engine
+# How To Use
+## docker engine
 ```
-docker run -d -p 9200:9200 -p 9300:9300 -e admin=changeme -e admin_pwd=changeme  Khezen/elasticseach:latest   
+docker run -d -p 9200:9200 -p 9300:9300 -e admin=changeme -e admin_pwd=changeme  Khezen/elasticsearch:latest   
 ```   
-##### docker-compose
+## docker-compose
 ```
 version: '2'
 services:
     elasticseach:
-        build: ..
+        image: khezen/elasticsearch:2.4
         environment:
-            - admin=admin
-            - admin_pwd=changeme
-            - kibana_server=kibana-server
-            - kibana_server_pwd=changeme
-            - kibana_user=kibana
-            - kibana_pwd=changeme
-            - logstash_user=logstash
-            - logstash_pwd=changeme
+            admin: admin
+            admin_pwd: changeme
+            kibana_server: kibana-server
+            kibana_server_pwd: changeme
+            kibana_user: kibana
+            kibana_pwd: changeme
+            logstash_user: logstash
+            logstash_pwd: changeme
         ports:
              - "9200:9200"
              - "9300:9300"
         network_mode: bridge
         restart: always
-
-
 ```
 
-### Environment Variables
+# Environment Variables
 
-#### Elasticseach
+## Elasticseach
 
 ##### admin | *admin*
 Admin user. See roles section to see his permissions.
@@ -55,7 +52,7 @@ Standard user. See roles section to see his permissions.
 ##### user_pwd | *changeme*
 User password
 
-#### Kibana
+## Kibana
 [configure kibana to use shield](https://www.elastic.co/guide/en/shield/current/kibana.html)
 
 ##### kibana_server | *kibana-server*
@@ -70,7 +67,7 @@ Kibana user. See roles section to see his permissions.
 ##### kibana_pwd | *changeme*
 Kibana password
 
-#### Logstash
+## Logstash
 [configure logstash to use shield](https://www.elastic.co/guide/en/shield/current/logstash.html)
 
 ##### logstash_user | *logstash*
@@ -79,7 +76,7 @@ Logstash user. See roles section to see his permissions.
 ##### logstash_pwd | *changeme*
 Logstash password
 
-#### Marvel
+## Marvel
 [configure marvel](https://www.elastic.co/guide/en/marvel/current/configuration.html)
 
 ##### marvel_user | *marvel*
@@ -94,7 +91,7 @@ Remote marvel agent user. See roles section to see his permissions.
 ##### remote_marvel_agent_pwd | *changeme*
 Remote marvel agent password
 
-#### Watcher
+## Watcher
 [configure watcher](https://www.elastic.co/guide/en/watcher/current/email-services.html)
 
 ##### watcher_admin | *watcher-admin*
@@ -104,7 +101,7 @@ Watcher admin user. See roles section to see his permissions.
 Watcher admin password
 
 
-### Roles
+# Roles
 
 ```
 # All cluster rights
