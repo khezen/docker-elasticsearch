@@ -1,6 +1,7 @@
 FROM elasticsearch:5.0
 
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
+LABEL Description="elasticsearch shield marvel watcher graph"
 
 COPY config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
