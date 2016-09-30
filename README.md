@@ -7,7 +7,7 @@
 # How To Use
 ## docker engine
 ```
-docker run -d -p 9200:9200 -p 9300:9300 -e admin=changeme -e admin_pwd=changeme  Khezen/elasticsearch:latest   
+docker run -d -p 9200:9200 -p 9300:9300 -e admin=changeme -e admin_pwd=changeme  khezen/elasticsearch:latest   
 ```   
 ## docker-compose
 ```
