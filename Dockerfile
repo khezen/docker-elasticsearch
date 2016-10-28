@@ -1,4 +1,4 @@
-FROM elasticsearch:5
+FROM elasticsearch:latest
 
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 LABEL Description="elasticsearch shield marvel watcher graph"
