@@ -18,6 +18,7 @@ run the following command on your host:
 ```
 sysctl -w vm.max_map_count=262144
 ```
+You can set it permanently by modifying `vm.max_map_count` setting in your `/etc/sysctl.conf`.
 
 ## docker engine
 ```
