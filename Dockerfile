@@ -1,4 +1,4 @@
-FROM elasticsearch:latest
+FROM elasticsearch:2.4
 
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 LABEL Description="elasticsearch shield marvel watcher graph"
@@ -6,7 +6,11 @@ LABEL Description="elasticsearch shield marvel watcher graph"
 COPY config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
 ## install modules
-RUN bin/elasticsearch-plugin install x-pack --batch
+RUN bin/plugin install license && \
+    bin/plugin install shield --batch && \
+    bin/plugin install marvel-agent --batch && \
+    bin/plugin install watcher --batch && \
+    bin/plugin install graph --batch
 
 # Add roles
 COPY config/roles.yml /elasticsearch/config/shield/
