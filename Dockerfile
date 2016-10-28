@@ -3,14 +3,11 @@ FROM elasticsearch:5.0
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 LABEL Description="elasticsearch shield marvel watcher graph"
 
-COPY config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
-COPY config/roles.yml /etc/elasticsearch/x-pack/roles.yml
-
-# Add roles
-COPY config/roles.yml /elasticsearch/config/shield/
-
 ## install modules
 RUN bin/elasticsearch-plugin install x-pack --batch
+
+COPY config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
+COPY config/roles.yml /etc/elasticsearch/x-pack/roles.yml
 
 ENV admin="admin" \
     admin_pwd="changeme" \
