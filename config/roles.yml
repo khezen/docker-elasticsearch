@@ -2,23 +2,23 @@
 # All operations on all indices
 admin:
   cluster:
-    - all
+    - 'all'
   indices:
     - names: 
         - '*'
       privileges:
-        - all
+        - 'all'
 
 # monitoring cluster privileges
 # All operations on all indices
 power_user:
   cluster:
-    - monitor
+    - 'monitor'
   indices:
     - names: 
-        - '*'
+        -'*'
       privileges:
-        - all
+        - 'all'
 
 # Read-only operations on indices
 user:
@@ -26,76 +26,82 @@ user:
     - names: 
         - '*'
       privileges:
-        - read
+        - 'read'
 
 # Defines the required permissions for transport clients
 transport_client:
   cluster:
-      - transport_client
+      - 'transport_client'
 
-# The required permissions for the kibana server
+# The required permissions for the kibana 4 server
 kibana_server:
   cluster:
-      - monitor
+      - 'monitor'
   indices:
     - names: 
         - '.kibana'
       privileges:
-        - all
+        - 'all'
 
 # The required permissions for a kibana admin
 kibana:
   cluster:
-      - monitor
+      - 'monitor'
   indices:
     - names: 
         - 'logstash-*'
-        - '.kibana*'
       privileges:
-        - all
+        - 'all'
+    - names: 
+        - '.kibana*' 
+      privileges:
+        - 'all'
 
 # The required role for logstash users
 logstash:
   cluster:
-    - manage_index_templates
+    - 'manage_index_templates'
   indices:
     - names: 
         - 'logstash-*'
       privileges:
-        - write
-        - delete
-        - create_index
+        - 'write'
+        - 'delete'
+        - 'create_index'
 
 # Marvel user role. Assign to marvel users.
 marvel_user:
   indices:
     - names: 
         - '.marvel-es-*'
+      privileges: 
+        - 'read'
+    - names: 
         - '.kibana'
       privileges:
-        - view_index_metadata
-        - read
+        - 'view_index_metadata'
+        - 'read'
 
 # Marvel remote agent role. Assign to the agent user on the remote marvel cluster
 # to which the marvel agent will export all its data
 remote_marvel_agent:
   cluster: 
-    - "manage_index_templates"
+    - 'manage_index_templates'
   indices:
     - names: 
         - '.marvel-es-*'
       privileges: 
-        - "all"
+        - 'all'
 
 # Watcher admin role.
 watcher_admin:
   cluster: 
-    - "monitor"
-    - "manage"
+    - 'monitor'
+    - 'manage'
   indices:
     - names: 
-        - ".watches" 
-        - ".triggered_watches"
-        - ".watcher-history*"
+        - '.watches'
+        - '.triggered_watches'
+        - '.watcher-history*'
       privileges: 
-        - "all"
+        - 'all'
