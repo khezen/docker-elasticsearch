@@ -1,8 +1,9 @@
 [![](https://images.microbadger.com/badges/image/khezen/elasticsearch.svg)](https://hub.docker.com/r/khezen/elasticsearch/)
 # Supported tags and respective `Dockerfile` links
 
-* `2.4.0`, `2.4`, `2`, `latest` [(2.4/Dockerfile)](https://github.com/Khezen/docker-elasticseach/blob/2.4/Dockerfile)
-* `5.0.0-alpha`, `5.0`, `5` [(5.0/Dockerfile)](https://github.com/Khezen/docker-elasticseach/blob/5.0/Dockerfile)
+* `2.4.0`, `2.4`, `2` [(2.4/Dockerfile)](https://github.com/Khezen/docker-elasticseach/blob/2.4/Dockerfile)
+* `5.0.0-alpha` [5.0.0-alpha/Dockerfile](https://github.com/Khezen/docker-elasticsearch/blob/42e51a87496bae3611ca5506740bf798e73c09d0/Dockerfile)]
+* `5.0.0`, `5.0`, `5`, `latest` [(5.0/Dockerfile)](https://github.com/Khezen/docker-elasticseach/blob/5.0/Dockerfile)
 
 # What is elasticseach?
 
@@ -14,13 +15,13 @@ Elasticsearch is a distributed, RESTful search and analytics engine capable of s
 ## docker engine
 ```
 docker run -d -p 9200:9200 -p 9300:9300 -e admin=changeme -e admin_pwd=changeme  khezen/elasticsearch:latest   
-```   
+```
 ## docker-compose
 ```
 version: '2'
 services:
     elasticseach:
-        image: khezen/elasticsearch:2.4
+        image: khezen/elasticsearch:5.0
         environment:
             admin: admin
             admin_pwd: changeme
