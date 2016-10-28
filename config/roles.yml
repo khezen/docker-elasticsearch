@@ -4,7 +4,8 @@ admin:
   cluster:
     - all
   indices:
-    - names: '*'
+    - names: 
+        - '*'
       privileges:
         - all
 
@@ -14,14 +15,16 @@ power_user:
   cluster:
     - monitor
   indices:
-    - names: '*'
+    - names: 
+        - '*'
       privileges:
         - all
 
 # Read-only operations on indices
 user:
   indices:
-    - names: '*'
+    - names: 
+        - '*'
       privileges:
         - read
 
@@ -35,7 +38,8 @@ kibana_server:
   cluster:
       - monitor
   indices:
-    - names: '.kibana'
+    - names: 
+        - '.kibana'
       privileges:
         - all
 
@@ -44,10 +48,9 @@ kibana:
   cluster:
       - monitor
   indices:
-    - names: 'logstash-*'
-      privileges:
-        - all
-    - names: '.kibana*' 
+    - names: 
+        - 'logstash-*'
+        - '.kibana*'
       privileges:
         - all
 
@@ -56,7 +59,8 @@ logstash:
   cluster:
     - manage_index_templates
   indices:
-    - names: 'logstash-*'
+    - names: 
+        - 'logstash-*'
       privileges:
         - write
         - delete
@@ -65,9 +69,9 @@ logstash:
 # Marvel user role. Assign to marvel users.
 marvel_user:
   indices:
-    - names: '.marvel-es-*'
-      privileges: [ "read" ]
-    - names: '.kibana'
+    - names: 
+        - '.marvel-es-*'
+        - '.kibana'
       privileges:
         - view_index_metadata
         - read
@@ -75,14 +79,23 @@ marvel_user:
 # Marvel remote agent role. Assign to the agent user on the remote marvel cluster
 # to which the marvel agent will export all its data
 remote_marvel_agent:
-  cluster: [ "manage_index_templates" ]
+  cluster: 
+    - "manage_index_templates"
   indices:
-    - names: '.marvel-es-*'
-      privileges: [ "all" ]
+    - names: 
+        - '.marvel-es-*'
+      privileges: 
+        - "all"
 
 # Watcher admin role.
 watcher_admin:
-  cluster: [ "monitor", "manage" ]
+  cluster: 
+    - "monitor"
+    - "manage"
   indices:
-    - names: [ ".watches", ".triggered_watches" ,".watcher-history*" ]
-      privileges: [ "all" ]
+    - names: 
+        - ".watches" 
+        - ".triggered_watches"
+        - ".watcher-history*"
+      privileges: 
+        - "all"
