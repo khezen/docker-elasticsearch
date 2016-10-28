@@ -11,6 +11,14 @@ Elasticsearch is a distributed, RESTful search and analytics engine capable of s
 [<img src="https://static-www.elastic.co/fr/assets/blt9a26f88bfbd20eb5/icon-elasticsearch-bb.svg?q=802" width="144" height="144">](https://www.elastic.co/fr/products/elasticsearch)
 
 # How To Use
+
+## [File Descriptors and MMap](https://www.elastic.co/guide/en/elasticsearch/guide/current/_file_descriptors_and_mmap.html)
+
+run the following command on your host:
+```
+sysctl -w vm.max_map_count=262144
+```
+
 ## docker engine
 ```
 docker run -d -p 9200:9200 -p 9300:9300 -e admin=changeme -e admin_pwd=changeme  khezen/elasticsearch:latest   
