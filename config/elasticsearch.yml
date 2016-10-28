@@ -6,3 +6,4 @@ path:
 network:
    host: 0.0.0.0
 discovery.zen.minimum_master_node: 1
+indices.fielddata.cache.size: 10%

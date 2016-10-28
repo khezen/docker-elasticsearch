@@ -50,6 +50,9 @@ services:
 
 ## Elasticseach
 
+##### heap_size | `1g`
+Defines the maximum memory allocated to elasticsearch.
+
 ##### admin | `admin`
 Admin user. See roles section to see his permissions.
 

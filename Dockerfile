@@ -28,8 +28,10 @@ ENV admin="admin" \
     remote_marvel_agent="marvel-agent" \
     remote_marvel_agent_pwd="changeme" \
     watcher_admin="watcher-admin" \
-    watcher_admin_pwd="changeme"
+    watcher_admin_pwd="changeme" \
+    heap_size="1g"
 
+RUN mkdir -p /config
 ADD ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
