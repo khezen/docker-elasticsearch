@@ -19,7 +19,7 @@ docker run -d -p 9200:9200 -p 9300:9300 -e admin=changeme -e admin_pwd=changeme 
 ```
 version: '2'
 services:
-    elasticseach:
+    elasticsearch:
         image: khezen/elasticsearch:5.0
         environment:
             admin: admin
