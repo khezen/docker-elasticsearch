@@ -10,7 +10,7 @@ RUN bin/plugin install license && \
     bin/plugin install shield --batch && \
     bin/plugin install marvel-agent --batch && \
     bin/plugin install watcher --batch && \
-    bin/plugin install graph
+    bin/plugin install graph --batch
 
 # Add roles
 COPY config/roles.yml /elasticsearch/config/shield/
