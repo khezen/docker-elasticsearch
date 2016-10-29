@@ -1,9 +1,9 @@
 [![](https://images.microbadger.com/badges/image/khezen/elasticsearch.svg)](https://hub.docker.com/r/khezen/elasticsearch/)
 # Supported tags and respective `Dockerfile` links
 
-* `5.0.0`, `5.0`, `5`, `latest` [(5.0/Dockerfile)](https://github.com/Khezen/docker-elasticseach/blob/5.0/Dockerfile)
+* `5.0.0`, `5.0`, `5`, `latest` [(5.0/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.0/Dockerfile)
 
-# What is elasticseach?
+# What is elasticsearch?
 
 Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases. As the heart of the Elastic Stack, it centrally stores your data so you can discover the expected and uncover the unexpected.
 
@@ -28,8 +28,8 @@ docker run -d -p 9200:9200 -p 9300:9300 -e elastic_pwd=dockerrocks -e kibana_pwd
 ```
 version: '2'
 services:
-    elasticseach:
-        build: ..
+    elasticsearch:
+        image: khezen/elasticsearch:5
         environment:
             elastic_pwd: changeme
             kibana_pwd: changeme
