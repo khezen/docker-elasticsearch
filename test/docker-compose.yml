@@ -3,10 +3,8 @@ services:
     elasticseach:
         build: ..
         environment:
-            superuser: admin
-            superuser_pwd: changeme
-            kibanauser: kibanauser
-            kibanauser_pwd: changeme
+            elastic_pwd: changeme
+            kibana_pwd: changeme
         ports:
              - "9200:9200"
              - "9300:9300"

@@ -21,23 +21,17 @@ You can set it permanently by modifying `vm.max_map_count` setting in your `/etc
 
 ## docker engine
 ```
-docker run -d -p 9200:9200 -p 9300:9300 -e admin=changeme -e admin_pwd=changeme  khezen/elasticsearch:latest   
+docker run -d -p 9200:9200 -p 9300:9300 -e elastic_pwd=dockerrocks -e kibana_pwd=brucewayne  khezen/elasticsearch:latest   
 ```
 ## docker-compose
 ```
 version: '2'
 services:
-    elasticsearch:
-        image: khezen/elasticsearch:5.0
+    elasticseach:
+        build: ..
         environment:
-            admin: admin
-            admin_pwd: changeme
-            kibana_server: kibana-server
-            kibana_server_pwd: changeme
-            kibana_user: kibana
+            elastic_pwd: changeme
             kibana_pwd: changeme
-            logstash_user: logstash
-            logstash_pwd: changeme
         ports:
              - "9200:9200"
              - "9300:9300"
@@ -52,20 +46,13 @@ services:
 ##### heap_size | `1g`
 Defines the maximum memory allocated to elasticsearch.
 
-##### superuser | `admin`
-Admin user. See roles section to see his permissions.
-
-##### superuser_pwd | `changeme`
-Admin password
+##### elastic_pwd | `changeme`
+password for built-in user *elastic*.
 
 ## Kibana
-[configure kibana to use shield](https://www.elastic.co/guide/en/shield/current/kibana.html)
 
-##### kibanauser | `kibanauser`
-Kibana user. See roles section to see his permissions.
-
-##### kibanauser_pwd | `changeme`
-Kibana password
+##### kibana_pwd | `changeme`
+password for built-in user *kibana*.
 
 # User Feedback
 ## Issues
