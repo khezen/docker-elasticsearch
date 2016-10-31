@@ -62,13 +62,7 @@ password for built-in user *beats*.
 "cluster": ["all"],
   "indices": [
     {
-      "names": [ 
-          "packetbeat-*",
-          "metricbeat-*",
-          "filebeat-*",
-          "winlogbeat-*",
-          "dockbeat-*"
-        ],
+      "names": [ "*beat-*" ],
       "privileges": ["all"]
     }
   ]

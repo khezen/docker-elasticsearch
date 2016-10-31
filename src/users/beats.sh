@@ -4,13 +4,7 @@ curl -XPOST -u "elastic:$elastic_pwd" "$HOSTNAME:9200/_xpack/security/role/beats
  \"cluster\": [\"all\"],
   \"indices\": [
     {
-      \"names\": [ 
-          \"packetbeat-*\",
-          \"metricbeat-*\",
-          \"filebeat-*\",
-          \"winlogbeat-*\",
-          \"dockbeat-*\"
-        ],
+      \"names\": [ \"*beat-*\" ],
       \"privileges\": [\"all\"]
     }
   ]
