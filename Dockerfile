@@ -6,7 +6,7 @@ LABEL Description="elasticsearch x-pack shield marvel watcher graph"
 ## install modules
 RUN bin/elasticsearch-plugin install x-pack --batch
 
-COPY config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
+COPY config/elasticsearch.yml /etc/elasticsearch/config/elasticsearch.yml
 
 ENV elastic_pwd="changeme" \
     kibana_pwd="changeme" \
@@ -17,5 +17,9 @@ ENV elastic_pwd="changeme" \
 RUN mkdir -p /config
 ADD ./src/ /run/
 RUN chmod +x -R /run/
+
+VOLUME /etc/elasticsearch/config
+VOLUME /data
+
 ENTRYPOINT ["/run/entrypoint.sh"]
 CMD ["elasticsearch"]
