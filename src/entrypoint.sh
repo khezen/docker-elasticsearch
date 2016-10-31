@@ -11,5 +11,6 @@ set -m
 /run/users/elastic.sh
 /run/users/kibana.sh
 /run/users/logstash.sh
+/run/users/beats.sh
 
 fg

@@ -11,6 +11,7 @@ COPY config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 ENV elastic_pwd="changeme" \
     kibana_pwd="changeme" \
     logstash_pwd="changeme" \
+    beats_pwd="changeme" \
     heap_size="1g"
 
 RUN mkdir -p /config
