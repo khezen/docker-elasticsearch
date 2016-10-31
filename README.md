@@ -57,18 +57,6 @@ password for built-in user *logstash*.
 ##### beats_pwd | `changeme`
 password for built-in user *beats*.
 
-`beats` user have the following rigths:
-```
-"cluster": ["all"],
-  "indices": [
-    {
-      "names": [ "*beat-*" ],
-      "privileges": ["all"]
-    }
-  ]
-```
-
-
 # User Feedback
 ## Issues
 If you have any problems with or questions about this image, please ask for help through a [GitHub issue](https://github.com/Khezen/docker-elasticsearch/issues).
