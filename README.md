@@ -51,6 +51,10 @@ password for built-in user *elastic*.
 ##### kibana_pwd | `changeme`
 password for built-in user *kibana*.
 
+##### logstash_pwd | `changeme`
+password for built-in user *logstash*.
+
+
 # User Feedback
 ## Issues
 If you have any problems with or questions about this image, please ask for help through a [GitHub issue](https://github.com/Khezen/docker-elasticsearch/issues).
