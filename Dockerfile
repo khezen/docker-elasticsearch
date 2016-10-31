@@ -10,8 +10,8 @@ COPY config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
 ENV elastic_pwd="changeme" \
     kibana_pwd="changeme" \
-    heap_size="1g" \
-    users=""
+    logstash_pwd="changeme" \
+    heap_size="1g"
 
 RUN mkdir -p /config
 ADD ./src/ /run/
