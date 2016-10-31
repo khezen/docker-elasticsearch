@@ -54,6 +54,26 @@ password for built-in user *kibana*.
 ##### logstash_pwd | `changeme`
 password for built-in user *logstash*.
 
+##### beats_pwd | `changeme`
+password for built-in user *beats*.
+
+`beats` user have the following rigths:
+```
+"cluster": ["all"],
+  "indices": [
+    {
+      "names": [ 
+          "packetbeat-*",
+          "metricbeat-*",
+          "filebeat-*",
+          "winlogbeat-*",
+          "dockbeat-*"
+        ],
+      "privileges": ["all"]
+    }
+  ]
+```
+
 
 # User Feedback
 ## Issues
