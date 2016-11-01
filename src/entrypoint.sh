@@ -2,6 +2,11 @@
 
 set -m
 
+if [ ! -f /etc/elasticsearch/config/elasticsearch.yml ]; then
+    echo "######################################################################"
+    cp -r /.backup/elasticsearch/config /etc/elasticsearch/
+fi
+
 /run/miscellaneous/perf.sh
 
 /docker-entrypoint.sh  "$@" &
