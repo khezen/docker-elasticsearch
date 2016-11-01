@@ -15,7 +15,6 @@ ENV elastic_pwd="changeme" \
     beats_pwd="changeme" \
     heap_size="1g"
 
-RUN mkdir -p /config
 ADD ./src/ /run/
 RUN chmod +x -R /run/
 
