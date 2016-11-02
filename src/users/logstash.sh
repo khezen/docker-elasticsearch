@@ -5,7 +5,12 @@ curl -XPOST -u "elastic:$elastic_pwd" "$HOSTNAME:9200/_xpack/security/role/logst
   \"indices\": [
     {
       \"names\": [ \"logstash-*\" ],
-      \"privileges\": [\"all\"]
+      \"privileges\": [
+          \"write\", 
+          \"delete\", 
+          \"create_index\", 
+          \"read\"
+        ]
     }
   ]
 }"
