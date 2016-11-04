@@ -19,9 +19,9 @@ $@ &
 
 /run/miscellaneous/wait_until_started.sh
 
-/run/users/elastic.sh
-/run/users/kibana.sh
-/run/users/logstash.sh
-/run/users/beats.sh
+/run/user/elastic.sh
+/run/user/kibana.sh
+/run/user/logstash.sh
+/run/user/beats.sh
 
 fg
