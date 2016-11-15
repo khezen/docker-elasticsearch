@@ -2,15 +2,10 @@
 
 set -m
 
-if [ ! -f /etc/elasticsearch/config/elasticsearch.yml ]; then
-    cp -r /.backup/elasticsearch/config /etc/elasticsearch/
-fi
-
 /run/miscellaneous/perf.sh
+/run/miscellaneous/restore_config.sh
 
-if [ "${1:0:1}" = '-' ]; then
-	set -- elasticsearch "$@"
-fi
+# Run as user "elasticsearch" if the command is "elasticsearch"
 if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
 	chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/data
 	set -- gosu elasticsearch "$@"
