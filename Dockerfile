@@ -9,11 +9,11 @@ RUN bin/elasticsearch-plugin install x-pack --batch
 RUN mkdir -p /.backup
 COPY config/elasticsearch.yml /.backup/elasticsearch/config/elasticsearch.yml
 
-ENV elastic_pwd="changeme" \
-    kibana_pwd="changeme" \
-    logstash_pwd="changeme" \
-    beats_pwd="changeme" \
-    heap_size="1g"
+ENV ELASTIC_PWD="changeme" \
+    KIBANA_PWD="changeme" \
+    LOGSTASH_PWD="changeme" \
+    BEATS_PWD="changeme" \
+    HEAP_SIZE="1g"
 
 ADD ./src/ /run/
 RUN chmod +x -R /run/
