@@ -21,7 +21,7 @@ You can set it permanently by modifying `vm.max_map_count` setting in your `/etc
 
 ## docker engine
 ```
-docker run -d -p 9200:9200 -p 9300:9300 -e elastic_pwd=dockerrocks -e kibana_pwd=brucewayne  khezen/elasticsearch:latest   
+docker run -d -p 9200:9200 -p 9300:9300 -e ELASTIC_PWD=dockerrocks -e KIBANA_PWD=brucewayne  khezen/elasticsearch:latest   
 ```
 
 ## docker-compose
@@ -31,8 +31,8 @@ services:
     elasticsearch:
         image: khezen/elasticsearch:5
         environment:
-            elastic_pwd: changeme
-            kibana_pwd: changeme
+            ELASTIC_PWD: changeme
+            KIBANA_PWD: changeme
         ports:
              - "9200:9200"
              - "9300:9300"
@@ -42,19 +42,19 @@ services:
 
 # Environment Variables
 
-##### heap_size | `1g`
+##### HEAP_SIZE | `1g`
 Defines the maximum memory allocated to elasticsearch.
 
-##### elastic_pwd | `changeme`
+##### ELASTIC_PWD | `changeme`
 password for built-in user *elastic*.
 
-##### kibana_pwd | `changeme`
+##### KIBANA_PWD | `changeme`
 password for built-in user *kibana*.
 
-##### logstash_pwd | `changeme`
+##### LOGSTASH_PWD | `changeme`
 password for built-in user *logstash*.
 
-##### beats_pwd | `changeme`
+##### BEATS_PWD | `changeme`
 password for built-in user *beats*.
 
 # User Feedback
