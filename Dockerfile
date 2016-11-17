@@ -7,7 +7,7 @@ LABEL Description="elasticsearch x-pack shield marvel watcher graph"
 RUN bin/elasticsearch-plugin install x-pack --batch
 
 RUN mkdir -p /.backup
-COPY config/elasticsearch.yml /.backup/elasticsearch.yml
+COPY config/elasticsearch.yml /.backup/config/elasticsearch.yml
 
 ENV ELASTIC_PWD="changeme" \
     KIBANA_PWD="changeme" \
