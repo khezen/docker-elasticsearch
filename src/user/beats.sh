@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl -XPOST -u "elastic:$elastic_pwd" "$HOSTNAME:9200/_xpack/security/role/beats_user" -d "{
+curl -XPOST -u "elastic:$ELASTIC_PWD" "$HOSTNAME:9200/_xpack/security/role/beats_user" -d "{
  \"cluster\": [\"all\"],
   \"indices\": [
     {
@@ -16,7 +16,7 @@ curl -XPOST -u "elastic:$elastic_pwd" "$HOSTNAME:9200/_xpack/security/role/beats
 }"
 
 
-curl -XPOST -u "elastic:$elastic_pwd" "$HOSTNAME:9200/_xpack/security/user/beats" -d "{
-  \"password\" : \"$beats_pwd\",
+curl -XPOST -u "elastic:$ELASTIC_PWD" "$HOSTNAME:9200/_xpack/security/user/beats" -d "{
+  \"password\" : \"$BEATS_PWD\",
   \"roles\": [\"beats_user\"]
 }"

@@ -6,7 +6,7 @@ if [ ! -f /.elastic ]; then
 fi
 
 curl -XPUT -u "elastic:$(cat /.elastic)" "$HOSTNAME:9200/_xpack/security/user/elastic/_password" -d "{
-    \"password\" : \"$elastic_pwd\"
+    \"password\" : \"$ELASTIC_PWD\"
 }"
 
-echo "$elastic_pwd" > /.elastic
+echo "$ELASTIC_PWD" > /.elastic
