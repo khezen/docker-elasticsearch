@@ -6,7 +6,19 @@ path:
 network:
    host: 0.0.0.0
 discovery.zen.minimum_master_node: 1
-#discovery.zen.ping.unicast.hosts:
-#   - 192.168.1.10:9300
-#   - 192.168.1.11 
-#   - seeds.mydomain.com 
+
+###############
+# SMTP CONFIG #
+###############
+#xpack.notification.email.account:
+#  gmail_account:
+#    profile: gmail #available values: standard(default), gmail, outlook
+#    email_defaults:
+#      from: 'John Doe <john.doe@host.domain>'
+#    smtp:
+#      auth: true
+#      starttls.enable: true
+#      host: smtp.gmail.com # examples: smtp-mail.outlook.com, email-smtp.us-east-1.amazonaws.com
+#      port: 587
+#      user: <username>
+#      password: <password>
