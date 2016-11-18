@@ -1,22 +1,14 @@
 #!/bin/bash
-mkdir -p /etc/elasticsearch
+mkdir -p /usr/share/elasticsearch/config
 
-if [ ! -f /etc/elasticsearch/elasticsearch.yml ]; then
-    cp -ra /.backup/elasticsearch/elasticsearch.yml /etc/elasticsearch
+if [ ! -f /usr/share/elasticsearch/config/elasticsearch.yml ]; then
+    cp -r /.backup/elasticsearch/config/elasticsearch.yml /usr/share/elasticsearch/config/
 fi
 
-if [ ! -f /etc/elasticsearch/jvm.options ]; then
-    cp -ra /.backup/elasticsearch/jvm.options /etc/elasticsearch
+if [ ! -f /usr/share/elasticsearch/config/log4j2.properties ]; then
+    cp -r /.backup/elasticsearch/config/log4j2.properties /usr/share/elasticsearch/config/
 fi
 
-if [ ! -f /etc/elasticsearch/log4j2.properties ]; then
-    cp -ra /.backup/elasticsearch/log4j2.properties /etc/elasticsearch
-fi
-
-if [ ! -d /etc/elasticsearch/x-pack ]; then
-    cp -ra /.backup/elasticsearch/x-pack /etc/elasticsearch
-fi
-
-if [ ! -d /etc/elasticsearch/scrpits ]; then
-    cp -ra /.backup/elasticsearch/scripts /etc/elasticsearch
+if [ ! -d /usr/share/elasticsearch/config/scrpits ]; then
+    cp -r /.backup/elasticsearch/config/scripts /usr/share/elasticsearch/config/
 fi
