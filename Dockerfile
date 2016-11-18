@@ -6,19 +6,21 @@ LABEL Description="elasticsearch x-pack shield marvel watcher graph"
 ## install modules
 RUN bin/elasticsearch-plugin install x-pack --batch
 
-COPY config/elasticsearch.yml /.backup/config/elasticsearch.yml
+RUN mkdir -p /.backup \
+&&  rm /etc/elasticsearch/elasticsearch.yml \
+&&  mv /etc/elasticsearch /.backup/elasticsearch
+COPY config/elasticsearch.yml /.backup/elasticsearch/elasticsearch.yml
 
 ENV ELASTIC_PWD="changeme" \
     KIBANA_PWD="changeme" \
     LOGSTASH_PWD="changeme" \
     BEATS_PWD="changeme" \
-    HEAP_SIZE="1g" \ 
-    CONF_DIR="/etc/elasticsearch/config"
+    HEAP_SIZE="1g"
 
 ADD ./src/ /run/
 RUN chmod +x -R /run/
 
-VOLUME /etc/elasticsearch/config
+VOLUME /etc/elasticsearch
 VOLUME /data
 
 ENTRYPOINT ["/run/entrypoint.sh"]

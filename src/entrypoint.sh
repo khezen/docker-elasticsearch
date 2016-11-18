@@ -1,8 +1,7 @@
 #!/bin/bash
 
 set -m
-
-/run/miscellaneous/perf.sh
+ES_JAVA_OPTS="-Xms$HEAP_SIZE -Xmx$HEAP_SIZE"
 /run/miscellaneous/restore_config.sh
 
 # Run as user "elasticsearch" if the command is "elasticsearch"
