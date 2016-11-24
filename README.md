@@ -60,6 +60,14 @@ password for built-in user *logstash*.
 ##### BEATS_PWD | `changeme`
 password for built-in user *beats*.
 
+# Configure elasticsearch
+
+Configuration file is editable from `/etc/elasticsearch/elasticsearch.yml` if you follow the same volume mounting as shown in the docker-compose example above.
+
+You can find default config [there](https://github.com/Khezen/docker-elasticsearch/blob/master/config/elasticsearch.yml).
+
+You can find help with elasticsearch configuration [there](https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html).
+
 # User Feedback
 ## Issues
 If you have any problems with or questions about this image, please ask for help through a [GitHub issue](https://github.com/Khezen/docker-elasticsearch/issues).
