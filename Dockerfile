@@ -15,6 +15,7 @@ ENV ELASTIC_PWD="changeme" \
     KIBANA_PWD="changeme" \
     LOGSTASH_PWD="changeme" \
     BEATS_PWD="changeme" \
+    ELASTALERT_PWD="changeme" \
     HEAP_SIZE="1g"
 
 ADD ./src/ /run/
