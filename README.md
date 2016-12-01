@@ -60,9 +60,6 @@ password for built-in user *logstash*.
 ##### BEATS_PWD | `changeme`
 password for built-in user *beats*.
 
-##### ELASTALERT_PWD | `changeme`
-password for built-in user *elastalert*.
-
 # Configure Elasticsearch
 
 Configuration file is located in `/etc/elasticsearch/elasticsearch.yml` if you follow the same volume mapping as in the docker-compose example above.

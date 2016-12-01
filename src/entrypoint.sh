@@ -18,6 +18,5 @@ fi
 /run/user/kibana.sh
 /run/user/logstash.sh
 /run/user/beats.sh
-/run/user/elastalert.sh
 
 fg
