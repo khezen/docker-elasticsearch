@@ -4,7 +4,7 @@ curl -XPOST -u "elastic:$ELASTIC_PWD" "$HOSTNAME:9200/_xpack/security/role/elast
  \"cluster\": [\"all\"],
   \"indices\": [
     {
-      \"names\": [ \"*elastalert_status-*\" ],
+      \"names\": [ \"*elastalert_status*\" ],
      \"privileges\": [
           \"write\", 
           \"delete\", 
