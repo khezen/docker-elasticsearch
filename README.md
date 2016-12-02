@@ -1,7 +1,7 @@
 [![](https://images.microbadger.com/badges/image/khezen/elasticsearch.svg)](https://hub.docker.com/r/khezen/elasticsearch/)
 # Supported tags and respective `Dockerfile` links
 
-* ``, `5.0`, `5`, `latest` [(5.0/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.0/Dockerfile)
+* `5.0.2`, `5.0`, `5`, `latest` [(5.0/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.0/Dockerfile)
 
 # What is elasticsearch?
 
