@@ -1,7 +1,7 @@
 FROM elasticsearch:5.1
 
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
-LABEL Description="elasticsearch x-pack shield marvel watcher graph"
+LABEL Description="elasticsearch searchguard"
 
 # env
 ENV CLUSTER_NAME="elasticsearch" \
