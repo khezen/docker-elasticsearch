@@ -9,10 +9,11 @@ admin:
 kibana_user:
   cluster:
     - MONITOR
+    - READ
   indices:
     '?kibana':
       '*':
-        - INDEX_OWNER
+        - INDEX_ALL
 
 beats_user:
   cluster:

@@ -2,7 +2,6 @@
 
 set -m
 /run/miscellaneous/restore_config.sh
-/run/auth/users.sh
 
 # Run as user "elasticsearch" if the command is "elasticsearch"
 if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
@@ -14,6 +13,8 @@ else
 fi
 
 /run/miscellaneous/wait_until_started.sh
+
+/run/auth/users.sh
 /run/auth/sgadmin.sh
 
 fg

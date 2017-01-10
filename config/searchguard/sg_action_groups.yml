@@ -13,6 +13,8 @@ DELETE_INDEX:
 INDEX_OWNER:
   - CREATE_INDEX
   - CRUD
+INDEX_ALL:
+  - "indices:*"
 
 # ELASTICSEARCH ENTRYPOINT
 GET_TEMPLATE:
@@ -31,6 +33,7 @@ CLUSTER_INFO:
   - "cluster:monitor/nodes/info"
 CLUSTER_HEALTH:
   - "cluster:monitor/health"
+
 MONITOR:
   - CLUSTER_INFO
   - CLUSTER_HEALTH
