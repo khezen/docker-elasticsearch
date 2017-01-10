@@ -47,6 +47,9 @@ services:
 
 # Environment Variables
 
+##### CLUSTER_NAME | `elasticsearch`
+ES cluster name.
+
 ##### HEAP_SIZE | `1g`
 Defines the maximum memory allocated to elasticsearch.
 
@@ -61,6 +64,16 @@ password for built-in user *logstash*.
 
 ##### BEATS_PWD | `changeme`
 password for built-in user *beats*.
+
+##### CA_PWD | `changeme`
+CA certificate passphrase.
+
+##### TS_PWD | `changeme`
+Truststore(public keys storage) password.
+
+##### KS_PWD | `changeme`
+Keystore(private key storage) password.
+
 
 # Configure Elasticsearch
 
