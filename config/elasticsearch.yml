@@ -1,18 +1,13 @@
+cluster.name: elasticsearch
 network.host: 0.0.0.0
 discovery.zen.minimum_master_nodes: 1
 
-###############
-# SMTP CONFIG #
-###############
-#xpack.notification.email.account:
-#  gmail_account:
-#    profile: gmail #available values: standard(default), gmail, outlook
-#    email_defaults:
-#      from: 'John Doe <john.doe@host.domain>'
-#    smtp:
-#      auth: true
-#      starttls.enable: true
-#      host: smtp.gmail.com # examples: smtp-mail.outlook.com, email-smtp.us-east-1.amazonaws.com
-#      port: 587
-#      user: <username>
-#      password: <password>
+searchguard:
+    ssl.transport:
+        keystore_filepath: /usr/share/elasticsearch/config/searchguard/ssl/node-0-keystore.jks
+        keystore_password: changeme
+        truststore_filepath: /usr/share/elasticsearch/config/searchguard/ssl/truststore.jks
+        truststore_password: changeme
+        enforce_hostname_verification: false
+    authcz.admin_dn:
+    - "CN=elastic ,OU=devops, C=COM"

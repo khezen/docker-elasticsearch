@@ -12,3 +12,7 @@ fi
 if [ ! -d /usr/share/elasticsearch/config/scrpits ]; then
     cp -r /.backup/elasticsearch/config/scripts /usr/share/elasticsearch/config/
 fi
+
+if [ ! -d /usr/share/elasticsearch/config/searchguard ]; then
+    cp -r /.backup/elasticsearch/config/searchguard /usr/share/elasticsearch/config/searchguard/
+fi

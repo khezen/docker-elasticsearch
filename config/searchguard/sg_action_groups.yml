@@ -1,0 +1,40 @@
+# INDICES
+READ:
+  - "indices:data/read*"
+WRITE:
+  - "indices:data/write*"
+CRUD:
+  - READ
+  - WRITE
+CREATE_INDEX:
+  - "indices:admin/create*"
+DELETE_INDEX:
+  - "indices:admin/delete*"
+INDEX_OWNER:
+  - CREATE_INDEX
+  - CRUD
+
+# ELASTICSEARCH ENTRYPOINT
+GET_TEMPLATE:
+  - "indices:admin/template/get"
+PUT_TEMPLATE:
+  - "indices:admin/template/put"
+TEMPLATE_OWNER:
+  - GET_TEMPLATE
+  - PUT_TEMPLATE
+ES_INPUT:
+  - TEMPLATE_OWNER
+  - WRITE
+
+# MONITORING
+CLUSTER_INFO:
+  - "cluster:monitor/nodes/info"
+CLUSTER_HEALTH:
+  - "cluster:monitor/health"
+MONITOR:
+  - CLUSTER_INFO
+  - CLUSTER_HEALTH
+
+# SUPER POWERS
+ALL:
+  - "*"

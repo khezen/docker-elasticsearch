@@ -2,10 +2,11 @@
 
 set -m
 /run/miscellaneous/restore_config.sh
+/run/auth/users.sh
 
 # Run as user "elasticsearch" if the command is "elasticsearch"
 if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
-	chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/data
+	chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
 	set -- gosu elasticsearch "$@"
 	ES_JAVA_OPTS="-Des.network.host=0.0.0.0 -Xms$HEAP_SIZE -Xmx$HEAP_SIZE" $@ &
 else
@@ -13,10 +14,6 @@ else
 fi
 
 /run/miscellaneous/wait_until_started.sh
-
-/run/user/elastic.sh
-/run/user/kibana.sh
-/run/user/logstash.sh
-/run/user/beats.sh
+/run/auth/sgadmin.sh
 
 fg
