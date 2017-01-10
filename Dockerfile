@@ -1,7 +1,7 @@
 FROM elasticsearch:5.1
 
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
-LABEL Description="elasticsearch searchguard"
+LABEL Description="elasticsearch searchguard search-guard"
 
 # env
 ENV CLUSTER_NAME="elasticsearch" \
