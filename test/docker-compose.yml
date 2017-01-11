@@ -1,16 +1,13 @@
 version: '2'
 services:
-    elasticseach:
-        build: ..
+    elasticsearch:
+        build: ../ 
         environment:
-            admin: admin
-            admin_pwd: changeme
-            kibana_server: kibana-server
-            kibana_server_pwd: changeme
-            kibana_user: kibana
-            kibana_pwd: changeme
-            logstash_user: logstash
-            logstash_pwd: changeme
+            ELASTIC_PWD: changeme
+            KIBANA_PWD: changeme
+        volumes:
+            - /data/elasticsearch:/usr/share/elasticsearch/data
+            - /etc/elasticsearch:/usr/share/elasticsearch/config 
         ports:
              - "9200:9200"
              - "9300:9300"

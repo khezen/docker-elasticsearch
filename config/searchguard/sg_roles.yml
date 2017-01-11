@@ -1,0 +1,38 @@
+admin:
+  cluster:
+    - ALL
+  indices:
+    "*":
+      "*":
+        - ALL
+
+kibana_user:
+  cluster:
+    - MONITOR
+    - READ
+  indices:
+    '?kibana':
+      '*':
+        - INDEX_ALL
+
+beats_user:
+  cluster:
+    - ES_INPUT
+  indices:
+    "*beat-*":
+      "*":
+        - INDEX_OWNER
+
+logstash_user:
+  cluster:
+    - ES_INPUT
+  indices:
+    'logstash-*':
+      '*':
+        - INDEX_OWNER
+
+read_only:
+  indices:
+    '*':
+      '*':
+        - READ

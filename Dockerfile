@@ -1,42 +1,38 @@
 FROM elasticsearch:2.4
 
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
-LABEL Description="elasticsearch shield marvel watcher graph"
+LABEL Description="elasticsearch searchguard search-guard"
 
-COPY config/elasticsearch.yml /elasticsearch/config/elasticsearch.yml
+# env
+ENV CLUSTER_NAME="elasticsearch" \
+    ELASTIC_PWD="changeme" \
+    KIBANA_PWD="changeme" \
+    LOGSTASH_PWD="changeme" \
+    BEATS_PWD="changeme" \
+    HEAP_SIZE="1g" \
+    CA_PWD="changeme" \
+    TS_PWD="changeme" \
+    KS_PWD="changeme"
 
 ## install modules
-RUN bin/plugin install license && \
-    bin/plugin install shield --batch && \
-    bin/plugin install marvel-agent --batch && \
-    bin/plugin install watcher --batch && \
-    bin/plugin install graph --batch
+RUN bin/plugin install -b com.floragunn/search-guard-ssl/2.4.3.19 \
+&&  bin/plugin install -b com.floragunn/search-guard-2/2.4.3.10
 
-# Add roles
-COPY config/roles.yml /elasticsearch/config/shield/
+# retrieve conf
+COPY config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
+COPY config/searchguard/ /usr/share/elasticsearch/config/searchguard/
 
-ENV admin="admin" \
-    admin_pwd="changeme" \
-    power_user="power-user" \
-    power_user_pwd="changeme" \
-    user="user" \
-    user_pwd="changeme" \
-    kibana_server="kibana-server" \
-    kibana_server_pwd="changeme" \
-    kibana_user="kibana" \
-    kibana_pwd="changeme" \
-    logstash_user="logstash" \
-    logstash_pwd="changeme" \
-    marvel_user="marvel" \
-    marvel_pwd="changeme" \
-    remote_marvel_agent="marvel-agent" \
-    remote_marvel_agent_pwd="changeme" \
-    watcher_admin="watcher-admin" \
-    watcher_admin_pwd="changeme" \
-    heap_size="1g"
+## ssl
+ADD ./src/auth/certificates /run/auth/certificates
+RUN chmod +x -R /run/ \
+&&  /run/auth/certificates/gen_all.sh
 
-RUN mkdir -p /config
-ADD ./entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+# backup conf
+RUN mkdir -p /.backup/elasticsearch/ \
+&&  mv /usr/share/elasticsearch/config /.backup/elasticsearch/config
+
+ADD ./src/ /run/
+RUN chmod +x -R /run/
+
+ENTRYPOINT ["/run/entrypoint.sh"]
 CMD ["elasticsearch"]
