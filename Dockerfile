@@ -15,7 +15,7 @@ ENV CLUSTER_NAME="elasticsearch" \
     KS_PWD="changeme"
 
 ## install modules
-RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.1.1-9
+# RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.1.1-9
 
 # retrieve conf
 COPY config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml

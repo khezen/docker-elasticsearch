@@ -2,12 +2,12 @@ cluster.name: elasticsearch
 network.host: 0.0.0.0
 discovery.zen.minimum_master_nodes: 1
 
-searchguard:
-    ssl.transport:
-        keystore_filepath: /usr/share/elasticsearch/config/searchguard/ssl/node-0-keystore.jks
-        keystore_password: changeme
-        truststore_filepath: /usr/share/elasticsearch/config/searchguard/ssl/truststore.jks
-        truststore_password: changeme
-        enforce_hostname_verification: false
-    authcz.admin_dn:
-    - "CN=elastic ,OU=devops, C=COM"
+# searchguard:
+#     ssl.transport:
+#         keystore_filepath: /usr/share/elasticsearch/config/searchguard/ssl/node-0-keystore.jks
+#         keystore_password: changeme
+#         truststore_filepath: /usr/share/elasticsearch/config/searchguard/ssl/truststore.jks
+#         truststore_password: changeme
+#         enforce_hostname_verification: false
+#     authcz.admin_dn:
+#     - "CN=elastic ,OU=devops, C=COM"
