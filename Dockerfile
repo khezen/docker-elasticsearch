@@ -34,5 +34,8 @@ RUN mkdir -p /.backup/elasticsearch/ \
 ADD ./src/ /run/
 RUN chmod +x -R /run/
 
+VOLUME /usr/hare/elasticsearch/config
+VOLUME /usr/hare/elasticsearch/dara
+
 ENTRYPOINT ["/run/entrypoint.sh"]
 CMD ["elasticsearch"]
