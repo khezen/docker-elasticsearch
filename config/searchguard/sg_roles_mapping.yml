@@ -6,6 +6,7 @@ admin:
     users:
         - elastic
         - kibana
+        - logstash
 
 kibana:
     backendroles:

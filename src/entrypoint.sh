@@ -14,7 +14,7 @@ fi
 
 /run/miscellaneous/wait_until_started.sh
 
-# /run/auth/users.sh
-# /run/auth/sgadmin.sh
+/run/auth/users.sh
+/run/auth/sgadmin.sh
 
 fg

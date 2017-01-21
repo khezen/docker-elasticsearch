@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NODE_NAME=node-$1
+NODE_NAME=elasticsearch-$1
 
 rm -f $NODE_NAME-keystore.jks
 rm -f $NODE_NAME.csr

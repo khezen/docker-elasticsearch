@@ -15,8 +15,8 @@ ENV CLUSTER_NAME="elasticsearch" \
     KS_PWD="changeme"
 
 ## install modules
-# RUN bin/plugin install -b com.floragunn/search-guard-ssl/2.4.3.19 \
-# &&  bin/plugin install -b com.floragunn/search-guard-2/2.4.3.10
+ RUN bin/plugin install -b com.floragunn/search-guard-ssl/2.4.4.19 \
+ &&  bin/plugin install -b com.floragunn/search-guard-2/2.4.4.10
 
 # retrieve conf
 COPY config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
