@@ -2,8 +2,9 @@
 
 set -m
 
-/run/auth/certificates/gen_all.sh
 /run/miscellaneous/restore_config.sh
+/run/miscellaneous/edit_config.sh
+/run/auth/certificates/gen_all.sh
 
 # Run as user "elasticsearch" if the command is "elasticsearch"
 if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
