@@ -3,6 +3,7 @@ network.host: 0.0.0.0
 node.name: ${HOSTNAME}
 discovery.zen.ping.multicast.enabled: true
 discovery.zen.minimum_master_nodes: 1
+index.auto_expand_replicas: 0-all
 
 searchguard:
     ssl.transport:
