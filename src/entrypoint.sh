@@ -1,6 +1,8 @@
 #!/bin/bash
 
 set -m
+
+/run/auth/certificates/gen_all.sh
 /run/miscellaneous/restore_config.sh
 
 # Run as user "elasticsearch" if the command is "elasticsearch"

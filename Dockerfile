@@ -22,11 +22,6 @@ ENV CLUSTER_NAME="elasticsearch" \
 COPY config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
 COPY config/searchguard/ /usr/share/elasticsearch/config/searchguard/
 
-## ssl
-ADD ./src/auth/certificates /run/auth/certificates
-RUN chmod +x -R /run/ \
-&&  /run/auth/certificates/gen_all.sh
-
 # backup conf
 RUN mkdir -p /.backup/elasticsearch/ \
 &&  mv /usr/share/elasticsearch/config /.backup/elasticsearch/config
