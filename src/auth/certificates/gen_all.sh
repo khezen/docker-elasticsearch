@@ -8,7 +8,7 @@ if [ ! -f .ca_pwd ] || [ "$CA_PWD" != $(cat .ca_pwd) ] || [ ! -f .ts_pwd ] || [ 
   /run/auth/certificates/init.sh
   /run/auth/certificates/gen_root_ca.sh
 
-  /run/auth/certificates/gen_node_cert.sh 0
+  /run/auth/certificates/gen_node_cert.sh
   /run/auth/certificates/gen_client_node_cert.sh elastic 
   /run/auth/certificates/gen_client_node_cert.sh kibana
   /run/auth/certificates/gen_client_node_cert.sh logstash

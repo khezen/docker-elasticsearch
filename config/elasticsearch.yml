@@ -7,7 +7,7 @@ searchguard:
         enabled: true
         enable_openssl_if_available: true
         keystore_type: JKS
-        keystore_filepath: /usr/share/elasticsearch/config/searchguard/ssl/elasticsearch-0-keystore.jks
+        keystore_filepath: /usr/share/elasticsearch/config/searchguard/ssl/elasticsearch-keystore.jks
         keystore_password: changeme
         truststore_type: JKS
         truststore_filepath: /usr/share/elasticsearch/config/searchguard/ssl/truststore.jks
@@ -19,7 +19,7 @@ searchguard:
         clientauth_mode: OPTIONAL
         enable_openssl_if_available: true
         keystore_type: JKS
-        keystore_filepath: /usr/share/elasticsearch/config/searchguard/ssl/elasticsearch-0-keystore.jks
+        keystore_filepath: /usr/share/elasticsearch/config/searchguard/ssl/elasticsearch-keystore.jks
         keystore_password: changeme
         truststore_type: JKS
         truststore_filepath: /usr/share/elasticsearch/config/searchguard/ssl/truststore.jks
