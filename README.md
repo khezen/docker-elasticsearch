@@ -51,6 +51,9 @@ services:
 ##### CLUSTER_NAME | `elasticsearch`
 ES cluster name.
 
+##### HOSTS | `[127.0.0.1]`
+List of hosts for node discovery (discovery.zen.ping.unicast.hosts)
+
 ##### HEAP_SIZE | `1g`
 Defines the maximum memory allocated to elasticsearch.
 
