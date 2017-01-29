@@ -5,6 +5,7 @@ LABEL Description="elasticsearch searchguard search-guard"
 
 # env
 ENV CLUSTER_NAME="elasticsearch" \
+    HOSTS="[127.0.0.1]" \
     ELASTIC_PWD="changeme" \
     KIBANA_PWD="changeme" \
     LOGSTASH_PWD="changeme" \
@@ -14,17 +15,12 @@ ENV CLUSTER_NAME="elasticsearch" \
     TS_PWD="changeme" \
     KS_PWD="changeme"
 
-## install modules
-# RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.1.1-9
+# install modules
+RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.1.2-10
 
 # retrieve conf
 COPY config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
 COPY config/searchguard/ /usr/share/elasticsearch/config/searchguard/
-
-## ssl
-ADD ./src/auth/certificates /run/auth/certificates
-RUN chmod +x -R /run/ \
-&&  /run/auth/certificates/gen_all.sh
 
 # backup conf
 RUN mkdir -p /.backup/elasticsearch/ \
@@ -32,6 +28,9 @@ RUN mkdir -p /.backup/elasticsearch/ \
 
 ADD ./src/ /run/
 RUN chmod +x -R /run/
+
+VOLUME /usr/hare/elasticsearch/config
+VOLUME /usr/hare/elasticsearch/dara
 
 ENTRYPOINT ["/run/entrypoint.sh"]
 CMD ["elasticsearch"]

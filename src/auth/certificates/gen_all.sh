@@ -1,14 +1,22 @@
 #!/bin/bash
 
 chmod +x /usr/share/elasticsearch/plugins/search-guard-5/tools/hash.sh
-
 cd /usr/share/elasticsearch/config/searchguard/ssl
 
-/run/auth/certificates/init.sh
-/run/auth/certificates/gen_root_ca.sh
-/run/auth/certificates/gen_node_cert.sh 0
+# if env changes
+if [ ! -f .ca_pwd ] || [ "$CA_PWD" != $(cat .ca_pwd) ] || [ ! -f .ts_pwd ] || [ "$TS_PWD" != $(cat .ts_pwd) ] || [ ! -f .ks_pwd ] || [ "$KS_PWD" != $(cat .ks_pwd) ]; then
+  /run/auth/certificates/init.sh
+  /run/auth/certificates/gen_root_ca.sh
 
-/run/auth/certificates/gen_client_node_cert.sh elastic 
-/run/auth/certificates/gen_client_node_cert.sh kibana
-/run/auth/certificates/gen_client_node_cert.sh logstash
-/run/auth/certificates/gen_client_node_cert.sh beats
+  /run/auth/certificates/gen_node_cert.sh
+  /run/auth/certificates/gen_client_node_cert.sh elastic 
+  /run/auth/certificates/gen_client_node_cert.sh kibana
+  /run/auth/certificates/gen_client_node_cert.sh logstash
+  /run/auth/certificates/gen_client_node_cert.sh beats
+  touch .ca_pwd
+  echo $CA_PWD > .ca_pwd
+  touch .ts_pwd
+  echo $TS_PWD > .ts_pwd
+  touch .ks_pwd
+  echo $KS_PWD > .ks_pwd
+fi

@@ -5,9 +5,8 @@ admin:
         - "*"
     users:
         - elastic
-        - kibana
 
-kibana:
+kibana_user:
     backendroles:
         - kibana_user
     host:
@@ -15,7 +14,7 @@ kibana:
     users:
         - kibana
 
-logstash:
+logstash_user:
     backendroles:
         - logstash_user
     host:
@@ -23,7 +22,7 @@ logstash:
     users:
         - logstash
 
-beats:
+beats_user:
     backendroles:
         - beats_user
     host:

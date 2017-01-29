@@ -27,16 +27,11 @@ TEMPLATE_OWNER:
 ES_INPUT:
   - TEMPLATE_OWNER
   - WRITE
+  - MONITOR
 
 # MONITORING
-CLUSTER_INFO:
-  - "cluster:monitor/nodes/info"
-CLUSTER_HEALTH:
-  - "cluster:monitor/health"
-
 MONITOR:
-  - CLUSTER_INFO
-  - CLUSTER_HEALTH
+  - "cluster:monitor*"
 
 # SUPER POWERS
 ALL:
