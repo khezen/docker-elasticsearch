@@ -5,6 +5,7 @@ LABEL Description="elasticsearch searchguard search-guard"
 
 # env
 ENV CLUSTER_NAME="elasticsearch" \
+    MINIMUM_MASTER_NODES=1 \
     ELASTIC_PWD="changeme" \
     KIBANA_PWD="changeme" \
     LOGSTASH_PWD="changeme" \
