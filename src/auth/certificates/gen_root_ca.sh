@@ -57,15 +57,15 @@ openssl ca \
 
 echo Signing CA generated
 
-openssl x509 -in ca/root-ca.crt -out ca/root-ca.pem -outform PEM
+openssl x509 -in ca/root-ca.crt -out $CA_FILE -outform PEM
 openssl x509 -in ca/signing-ca.crt -out ca/signing-ca.pem -outform PEM
-cat ca/signing-ca.pem ca/root-ca.pem > ca/chain-ca.pem
+cat ca/signing-ca.pem $CA_FILE > ca/chain-ca.pem
 
 #http://stackoverflow.com/questions/652916/converting-a-java-keystore-into-pem-format
 
-cat ca/root-ca.pem | keytool \
+cat $CA_FILE | keytool \
     -import \
     -v \
-    -keystore truststore.jks   \
+    -keystore $TRUSTORE_FILE   \
     -storepass $ts_pwd  \
     -noprompt -alias root-ca-chain
