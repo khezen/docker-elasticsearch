@@ -1,61 +1,63 @@
 #!/bin/bash
 
-NODE_NAME=elasticsearch
+node_name=elasticsearch
+ca_pwd=$1
+ks_pwd=$2
 
-rm -f $NODE_NAME-keystore.jks
-rm -f $NODE_NAME.csr
-rm -f $NODE_NAME-signed.pem
+rm -f $node_name-keystore.jks
+rm -f $node_name.csr
+rm -f $node_name-signed.pem
 
-echo Generating keystore and certificate for node $NODE_NAME
+echo Generating keystore and certificate for node $node_name
 
 keytool -genkey \
-        -alias     $NODE_NAME \
-        -keystore  $NODE_NAME-keystore.jks \
+        -alias     $node_name \
+        -keystore  $node_name-keystore.jks \
         -keyalg    RSA \
         -keysize   2048 \
         -validity  712 \
         -sigalg SHA256withRSA \
-        -keypass $KS_PWD \
-        -storepass $KS_PWD \
-        -dname "CN=$NODE_NAME, OU=SSL, C=COM" \
-        -ext san=dns:$NODE_NAME,dns:localhost,ip:127.0.0.1,oid:1.2.3.4.5.5 
-        
+        -keypass $ks_pwd \
+        -storepass $ks_pwd \
+        -dname "CN=$node_name, OU=SSL, C=COM" \
+        -ext san=dns:$node_name,dns:localhost,ip:127.0.0.1,oid:1.2.3.4.5.5
+
 #oid:1.2.3.4.5.5 denote this a server node certificate for search guard
 
-echo Generating certificate signing request for node $NODE_NAME
+echo Generating certificate signing request for node $node_name
 
 keytool -certreq \
-        -alias      $NODE_NAME \
-        -keystore   $NODE_NAME-keystore.jks \
-        -file       $NODE_NAME.csr \
+        -alias      $node_name \
+        -keystore   $node_name-keystore.jks \
+        -file       $node_name.csr \
         -keyalg     rsa \
-        -keypass $KS_PWD \
-        -storepass $KS_PWD \
-        -dname "CN=$NODE_NAME, OU=SSL, C=COM" \
-        -ext san=dns:$NODE_NAME,dns:localhost,ip:127.0.0.1,oid:1.2.3.4.5.5
-        
+        -keypass $ks_pwd \
+        -storepass $ks_pwd \
+        -dname "CN=$node_name, OU=SSL, C=COM" \
+        -ext san=dns:$node_name,dns:localhost,ip:127.0.0.1,oid:1.2.3.4.5.5
+
 #oid:1.2.3.4.5.5 denote this a server node certificate for search guard
 
 echo Sign certificate request with CA
 openssl ca \
-    -in $NODE_NAME.csr \
+    -in $node_name.csr \
     -notext \
-    -out $NODE_NAME-signed.pem \
+    -out $node_name-signed.pem \
     -config etc/signing-ca.conf \
     -extensions v3_req \
     -batch \
-	-passin pass:$CA_PWD \
-	-extensions server_ext 
+	-passin pass:$ca_pwd \
+	-extensions server_ext
 
 echo "Import back to keystore (including CA chain)"
 
-cat ca/chain-ca.pem $NODE_NAME-signed.pem | keytool \
+cat ca/chain-ca.pem $node_name-signed.pem | keytool \
     -importcert \
-    -keystore $NODE_NAME-keystore.jks \
-    -storepass $KS_PWD \
+    -keystore $node_name-keystore.jks \
+    -storepass $ks_pwd \
     -noprompt \
-    -alias $NODE_NAME
-    
-keytool -importkeystore -srckeystore $NODE_NAME-keystore.jks -srcstorepass $KS_PWD -srcstoretype JKS -deststoretype PKCS12 -deststorepass $KS_PWD -destkeystore $NODE_NAME-keystore.p12
+    -alias $node_name
 
-echo All done for $NODE_NAME
+keytool -importkeystore -srckeystore $node_name-keystore.jks -srcstorepass $ks_pwd -srcstoretype JKS -deststoretype PKCS12 -deststorepass $ks_pwd -destkeystore $node_name-keystore.p12
+
+echo All done for $node_name

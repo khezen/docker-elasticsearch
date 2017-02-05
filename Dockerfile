@@ -12,9 +12,9 @@ ENV CLUSTER_NAME="elasticsearch" \
     LOGSTASH_PWD="changeme" \
     BEATS_PWD="changeme" \
     HEAP_SIZE="1g" \
-    CA_PWD="changeme" \
-    TS_PWD="changeme" \
-    KS_PWD="changeme"
+    CA_FILE="/etc/ssl/ca/elastic-ca.pem" \
+    TRUSTORE_FILE="/etc/ssl/trustore.jks" \
+    KEYSTORE_FILE="/etc/ssl/keystore.jks"
 
 # install modules
 RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.1.2-10

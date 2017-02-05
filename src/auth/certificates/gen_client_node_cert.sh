@@ -1,56 +1,58 @@
 #!/bin/bash
 
-CLIENT_NAME=$1
+client_name=$1
+ca_pwd=$2
+ks_pwd=$3
 
-echo Generating keystore and certificate for node $CLIENT_NAME
+echo Generating keystore and certificate for node $client_name
 
 keytool -genkey \
-        -alias     $CLIENT_NAME \
-        -keystore  $CLIENT_NAME-keystore.jks \
+        -alias     $client_name \
+        -keystore  $client_name-keystore.jks \
         -keyalg    RSA \
         -keysize   2048 \
         -sigalg SHA256withRSA \
         -validity  712 \
-        -keypass $KS_PWD \
-        -storepass $KS_PWD \
-        -dname "CN=$CLIENT_NAME, OU=devops, C=COM"
+        -keypass $ks_pwd \
+        -storepass $ks_pwd \
+        -dname "CN=$client_name, OU=devops, C=COM"
 
-echo Generating certificate signing request for node $CLIENT_NAME
+echo Generating certificate signing request for node $client_name
 
 keytool -certreq \
-        -alias      $CLIENT_NAME \
-        -keystore   $CLIENT_NAME-keystore.jks \
-        -file       $CLIENT_NAME.csr \
+        -alias      $client_name \
+        -keystore   $client_name-keystore.jks \
+        -file       $client_name.csr \
         -keyalg     rsa \
-        -keypass $KS_PWD \
-        -storepass $KS_PWD \
-        -dname "CN=$CLIENT_NAME, OU=devops, C=COM"
+        -keypass $ks_pwd \
+        -storepass $ks_pwd \
+        -dname "CN=$client_name, OU=devops, C=COM"
 
 echo Sign certificate request with CA
 openssl ca \
-    -in $CLIENT_NAME.csr \
+    -in $client_name.csr \
     -notext \
-    -out $CLIENT_NAME-signed.pem \
+    -out $client_name-signed.pem \
     -config etc/signing-ca.conf \
     -extensions v3_req \
     -batch \
 	-passin pass:$CA_PWD \
-	-extensions server_ext 
+	-extensions server_ext
 
 echo "Import back to keystore (including CA chain)"
 
-cat ca/chain-ca.pem $CLIENT_NAME-signed.pem | keytool \
+cat ca/chain-ca.pem $client_name-signed.pem | keytool \
     -importcert \
-    -keystore $CLIENT_NAME-keystore.jks \
-    -storepass $KS_PWD \
+    -keystore $client_name-keystore.jks \
+    -storepass $ks_pwd \
     -noprompt \
-    -alias $CLIENT_NAME
+    -alias $client_name
 
-keytool -importkeystore -srckeystore $CLIENT_NAME-keystore.jks -srcstorepass $KS_PWD -srcstoretype JKS -deststoretype PKCS12 -deststorepass $KS_PWD -destkeystore $CLIENT_NAME-keystore.p12
+keytool -importkeystore -srckeystore $client_name-keystore.jks -srcstorepass $ks_pwd -srcstoretype JKS -deststoretype PKCS12 -deststorepass $ks_pwd -destkeystore $client_name-keystore.p12
 
-openssl pkcs12 -in "$CLIENT_NAME-keystore.p12" -out "$CLIENT_NAME.all.pem" -nodes -passin "pass:$KS_PWD"
-openssl pkcs12 -in "$CLIENT_NAME-keystore.p12" -out "$CLIENT_NAME.key.pem" -nocerts -nodes -passin pass:$KS_PWD
-openssl pkcs12 -in "$CLIENT_NAME-keystore.p12" -out "$CLIENT_NAME.crt.pem" -clcerts -nokeys -passin pass:$KS_PWD
-cat "$CLIENT_NAME.crt.pem" ca/chain-ca.pem  > "$CLIENT_NAME.crtfull.pem"
+openssl pkcs12 -in "$client_name-keystore.p12" -out "$client_name.all.pem" -nodes -passin "pass:$ks_pwd"
+openssl pkcs12 -in "$client_name-keystore.p12" -out "$client_name.key.pem" -nocerts -nodes -passin pass:$ks_pwd
+openssl pkcs12 -in "$client_name-keystore.p12" -out "$client_name.crt.pem" -clcerts -nokeys -passin pass:$ks_pwd
+cat "$client_name.crt.pem" ca/chain-ca.pem  > "$client_name.crtfull.pem"
 
-echo All done for $CLIENT_NAME
+echo All done for $client_name

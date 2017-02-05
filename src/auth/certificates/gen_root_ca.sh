@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ca_pwd=$1
+ts_pwd=$2
 rm -rf ca certs* crl *.jks
 
 mkdir -p ca/root-ca/private ca/root-ca/db crl certs
@@ -11,14 +13,14 @@ echo 01 > ca/root-ca/db/root-ca.crt.srl
 echo 01 > ca/root-ca/db/root-ca.crl.srl
 
 echo 1
-echo $CA_PWD
+echo $ca_pwd
 
 openssl req -new \
     -config etc/root-ca.conf \
     -out ca/root-ca.csr \
     -keyout ca/root-ca/private/root-ca.key \
 	-batch \
-	-passout pass:$CA_PWD
+	-passout pass:$ca_pwd
 
 openssl ca -selfsign \
     -config etc/root-ca.conf \
@@ -26,10 +28,10 @@ openssl ca -selfsign \
     -out ca/root-ca.crt \
     -extensions root_ca_ext \
 	-batch \
-	-passin pass:$CA_PWD
-	
+	-passin pass:$ca_pwd
+
 echo Root CA generated
-	
+
 mkdir -p ca/signing-ca/private ca/signing-ca/db crl certs
 chmod 700 ca/signing-ca/private
 
@@ -43,16 +45,16 @@ openssl req -new \
     -out ca/signing-ca.csr \
     -keyout ca/signing-ca/private/signing-ca.key \
 	-batch \
-	-passout pass:$CA_PWD
-	
+	-passout pass:$ca_pwd
+
 openssl ca \
     -config etc/root-ca.conf \
     -in ca/signing-ca.csr \
     -out ca/signing-ca.crt \
     -extensions signing_ca_ext \
 	-batch \
-	-passin pass:$CA_PWD
-	
+	-passin pass:$ca_pwd
+
 echo Signing CA generated
 
 openssl x509 -in ca/root-ca.crt -out ca/root-ca.pem -outform PEM
@@ -65,5 +67,5 @@ cat ca/root-ca.pem | keytool \
     -import \
     -v \
     -keystore truststore.jks   \
-    -storepass $TS_PWD  \
+    -storepass $ts_pwd  \
     -noprompt -alias root-ca-chain
