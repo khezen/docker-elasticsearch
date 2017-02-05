@@ -13,8 +13,7 @@ ENV CLUSTER_NAME="elasticsearch" \
     BEATS_PWD="changeme" \
     HEAP_SIZE="1g" \
     CA_FILE="/etc/ssl/ca/elastic-ca.pem" \
-    TRUSTORE_FILE="/etc/ssl/trustore.jks" \
-    KEYSTORE_FILE="/etc/ssl/keystore.jks"
+    TRUSTORE_FILE="/etc/ssl/trustore.jks" 
 
 # install modules
 RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.1.2-10
