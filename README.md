@@ -1,8 +1,9 @@
 [![](https://images.microbadger.com/badges/image/khezen/elasticsearch.svg)](https://hub.docker.com/r/khezen/elasticsearch/)
 # Supported tags and respective `Dockerfile` links
 
-* `2.4.4`, `2.4`, `2` [(2.4/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/2.4/Dockerfile) 
-* `5.1.2`, `5.1`, `5`, `latest` [(5.1/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.1/Dockerfile)
+* `2.4.4`, `2.4`, `2` [(2.4/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/2.4/Dockerfile)
+* `5.1.2`, `5.1` [(5.1/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.1/Dockerfile)
+* `5.2.0`, `5.2`, `5`, `latest` [(5.2/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.2/Dockerfile)
 
 
 # What is elasticsearch?
@@ -38,7 +39,7 @@ services:
             KIBANA_PWD: changeme
         volumes:
             - /data/elasticsearch:/usr/share/elasticsearch/data
-            - /etc/elasticsearch:/usr/share/elasticsearch/config 
+            - /etc/elasticsearch:/usr/share/elasticsearch/config
         ports:
              - "9200:9200"
              - "9300:9300"
