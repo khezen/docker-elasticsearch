@@ -16,4 +16,4 @@ logstash:
 beats:
   hash: changeme #beats
   roles:
-        - beats_user
+    - beats_user
