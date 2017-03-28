@@ -5,24 +5,6 @@ LABEL Description="elasticsearch searchguard search-guard"
 
 EXPOSE 9200 9300
 
-# env
-ENV CLUSTER_NAME="elasticsearch" \
-    NODE_NAME=$HOSTNAME \
-    NODE_MASTER=true \
-    NODE_DATA=true \
-    NODE_INGEST=true \
-    NETWORK_HOST="0.0.0.0" \
-    HOSTS=["127.0.0.1", "[::1]"] \
-    MINIMUM_MASTER_NODES=1 \
-    ELASTIC_PWD="changeme" \
-    KIBANA_PWD="changeme" \
-    LOGSTASH_PWD="changeme" \
-    BEATS_PWD="changeme" \
-    HEAP_SIZE="1g" \
-    CA_PWD="changeme" \
-    TS_PWD="changeme" \
-    KS_PWD="changeme"
-
 # install modules
 RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.2.2-11
 
@@ -39,6 +21,27 @@ RUN chmod +x -R /run/
 
 VOLUME /usr/hare/elasticsearch/config
 VOLUME /usr/hare/elasticsearch/dara
+
+# env
+ENV CLUSTER_NAME="elasticsearch-default" \
+    MINIMUM_MASTER_NODES=1 \
+    HOSTS=["127.0.0.1", "[::1]"] \
+    NODE_NAME=$HOSTNAME \
+    NODE_MASTER=true \
+    NODE_DATA=true \
+    NODE_INGEST=true \
+    HTTP_ENABLE=true \
+    HTTP_CORS_ENABLE=true \
+    HTTP_CORS_ALLOW_ORIGIN=* \
+    NETWORK_HOST="0.0.0.0" \
+    ELASTIC_PWD="changeme" \
+    KIBANA_PWD="changeme" \
+    LOGSTASH_PWD="changeme" \
+    BEATS_PWD="changeme" \
+    HEAP_SIZE="1g" \
+    CA_PWD="changeme" \
+    TS_PWD="changeme" \
+    KS_PWD="changeme"
 
 ENTRYPOINT ["/run/entrypoint.sh"]
 CMD ["elasticsearch"]

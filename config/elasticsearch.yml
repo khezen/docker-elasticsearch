@@ -11,6 +11,13 @@ discovery.zen:
   ping.unicast.hosts: ${HOSTS}
 network.host: ${NETWORK_HOST}
 
+http:
+  enabled: ${HTTP_ENABLE}
+  compression: true
+  cors:
+    enabled: ${HTTP_CORS_ENABLE}
+    allow-origin: ${HTTP_CORS_ALLOW_ORIGIN}
+
 searchguard:
     ssl.transport:
         enabled: true

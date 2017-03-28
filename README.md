@@ -49,6 +49,8 @@ services:
 
 # Environment Variables
 
+## Cluster
+
 ##### CLUSTER_NAME | `elasticsearch`
 ES cluster name.
 
@@ -56,12 +58,40 @@ ES cluster name.
 [This setting]((https://www.elastic.co/guide/en/elasticsearch/guide/1.x/_important_configuration_changes.html#_minimum_master_nodes)) tells Elasticsearch to not elect a master unless there are enough master-eligible nodes available. Only then will an election take place.
 We recommand to set this variable to `(number of nodes / 2) + 1`
 
-
-##### HOSTS | `[127.0.0.1]`
+##### HOSTS | `["127.0.0.1", "[::1]"]`
 List of hosts for node discovery (discovery.zen.ping.unicast.hosts)
 
+## Node
+
+##### NODE_NAME | `$HOSTNAME`
+ES cluster name.
+
+##### NODE_MASTER | `true`
+Set to true (default) makes it eligible to be elected as the master node, which controls the cluster.
+
+##### NODE_DATA | `true`
+Data nodes hold data and perform data related operations such as CRUD, search, and aggregations.
+
+##### NODE_INGEST | `true`
+Ingest nodes are able to apply an ingest pipeline to a document in order to transform and enrich the document before indexing. With a heavy ingest load, it makes sense to use dedicated ingest nodes and to mark the master and data nodes as `NODE_INGEST: false`
+.
+##### HTTP_ENABLE | `true`
+http can be completely disabled and not started by setting HTTP_ENABLE to false. Elasticsearch nodes (and Java clients) communicate internally using the transport interface, not HTTP. It might make sense to disable the http layer entirely on nodes which are not meant to serve REST requests directly. For instance, you could disable HTTP on data-only nodes if you also have client nodes which are intended to serve all REST requests. Be aware, however, that you will not be able to send any REST requests (eg to retrieve node stats) directly to nodes which have HTTP disabled.
+
+##### HTTP_CORS_ENABLE | `true`
+Enable or disable cross-origin resource sharing, i.e. whether a browser on another origin can execute requests against Elasticsearch. Note that if the client does not send a pre-flight request with an Origin header or it does not check the response headers from the server to validate the Access-Control-Allow-Origin response header, then cross-origin security is compromised.
+
+##### HTTP_CORS_ALLOW_ORIGIN | `*`
+Which origins to allow. Note that `*` is a valid value but is considered a security risk as your elasticsearch instance is open to cross origin requests from anywhere.
+
+##### NETWORK_HOST |`0.0.0.0`
+The node will bind to this hostname or IP address and advertise this host to other nodes in the cluster. Accepts an IP address, hostname, a special value, or an array of any combination of these.
+
 ##### HEAP_SIZE | `1g`
-Defines the maximum memory allocated to elasticsearch.
+Defines the maximum memory allocated to this node.
+
+
+## Security
 
 ##### ELASTIC_PWD | `changeme`
 password for built-in user *elastic*.

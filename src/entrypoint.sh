@@ -9,7 +9,7 @@ set -m
 if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
 	chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
 	set -- gosu elasticsearch "$@"
-	ES_JAVA_OPTS="-Des.network.host=0.0.0.0  -Des.logger.level=INFO -Xms$HEAP_SIZE -Xmx$HEAP_SIZE" $@ &
+	ES_JAVA_OPTS="-Des.network.host=$NETWORK_HOST  -Des.logger.level=INFO -Xms$HEAP_SIZE -Xmx$HEAP_SIZE" $@ &
 else
 	$@ &
 fi
