@@ -3,9 +3,16 @@ FROM elasticsearch:5.2.1
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 LABEL Description="elasticsearch searchguard search-guard"
 
+EXPOSE 9200 9300
+
 # env
 ENV CLUSTER_NAME="elasticsearch" \
-    HOSTS="[127.0.0.1]" \
+    NODE_NAME=$HOSTNAME \
+    NODE_MASTER=true \
+    NODE_DATA=true \
+    NODE_INGEST=true \
+    NETWORK_HOST="0.0.0.0" \
+    HOSTS=["127.0.0.1", "[::1]"] \
     MINIMUM_MASTER_NODES=1 \
     ELASTIC_PWD="changeme" \
     KIBANA_PWD="changeme" \

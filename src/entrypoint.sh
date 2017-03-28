@@ -3,7 +3,6 @@
 set -m
 
 /run/miscellaneous/restore_config.sh
-/run/miscellaneous/edit_config.sh
 /run/auth/certificates/gen_all.sh
 
 # Run as user "elasticsearch" if the command is "elasticsearch"
