@@ -3,7 +3,7 @@
 
 * `2.4.4`, `2.4`, `2` [(2.4/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/2.4/Dockerfile)
 * `5.1.2`, `5.1` [(5.1/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.1/Dockerfile)
-* `5.2.1`, `5.2`, `5`, `latest` [(5.2/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.2/Dockerfile)
+* `5.2.2`, `5.2`, `5`, `latest` [(5.2/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.2/Dockerfile)
 
 
 # What is elasticsearch?
