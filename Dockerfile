@@ -25,7 +25,7 @@ VOLUME /usr/hare/elasticsearch/dara
 # env
 ENV CLUSTER_NAME="elasticsearch-default" \
     MINIMUM_MASTER_NODES=1 \
-    HOSTS=["127.0.0.1", "[::1]"] \
+    HOSTS="['127.0.0.1', '[::1]']" \
     NODE_NAME=$HOSTNAME \
     NODE_MASTER=true \
     NODE_DATA=true \
