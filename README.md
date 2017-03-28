@@ -58,7 +58,7 @@ ES cluster name.
 [This setting]((https://www.elastic.co/guide/en/elasticsearch/guide/1.x/_important_configuration_changes.html#_minimum_master_nodes)) tells Elasticsearch to not elect a master unless there are enough master-eligible nodes available. Only then will an election take place.
 We recommand to set this variable to `(number of nodes / 2) + 1`
 
-##### HOSTS | `["127.0.0.1", "[::1]"]`
+##### HOSTS | `['127.0.0.1', '[::1]']`
 List of hosts for node discovery (discovery.zen.ping.unicast.hosts)
 
 ## Node
