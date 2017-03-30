@@ -91,7 +91,7 @@ The node will bind to this hostname or IP address and advertise this host to oth
 Defines the maximum memory allocated to this node.
 
 
-## Security
+## Security & Roles
 
 ##### ELASTIC_PWD | `changeme`
 password for built-in user *elastic*.
