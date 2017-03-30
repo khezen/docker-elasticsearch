@@ -1,4 +1,4 @@
-FROM elasticsearch:5.2.2
+FROM elasticsearch:5.3.0
 
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 LABEL Description="elasticsearch searchguard search-guard"
@@ -6,7 +6,7 @@ LABEL Description="elasticsearch searchguard search-guard"
 EXPOSE 9200 9300
 
 # install modules
-RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.2.2-11
+RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.3.0-11-20170329.222527-2
 
 # retrieve conf
 COPY config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
