@@ -1,16 +1,73 @@
-FROM elasticsearch:5.3.0
+FROM openjdk:8-jre
 
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 LABEL Description="elasticsearch searchguard search-guard"
 
 EXPOSE 9200 9300
 
-# install modules
-RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.3.0-11-20170329.222527-2
+# grab gosu for easy step-down from root
+ENV GOSU_VERSION 1.7
+RUN set -x \
+	&& wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
+	&& wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture).asc" \
+	&& export GNUPGHOME="$(mktemp -d)" \
+	&& gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
+	&& gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu \
+	&& rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc \
+	&& chmod +x /usr/local/bin/gosu \
+	&& gosu nobody true
 
-# retrieve conf
-COPY config/elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
-COPY config/searchguard/ /usr/share/elasticsearch/config/searchguard/
+RUN set -ex; \
+# https://artifacts.elastic.co/GPG-KEY-elasticsearch
+	key='46095ACC8548582C1A2699A9D27D666CD88E42B4'; \
+	export GNUPGHOME="$(mktemp -d)"; \
+	gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
+	gpg --export "$key" > /etc/apt/trusted.gpg.d/elastic.gpg; \
+	rm -r "$GNUPGHOME"; \
+	apt-key list
+
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-repositories.html
+# https://www.elastic.co/guide/en/elasticsearch/reference/5.0/deb.html
+RUN set -x \
+	&& apt-get update && apt-get install -y --no-install-recommends apt-transport-https && rm -rf /var/lib/apt/lists/* \
+	&& echo 'deb https://artifacts.elastic.co/packages/5.x/apt stable main' > /etc/apt/sources.list.d/elasticsearch.list
+
+ENV ELASTICSEARCH_VERSION 5.3.0
+ENV ELASTICSEARCH_DEB_VERSION 5.3.0
+
+RUN set -x \
+	\
+# don't allow the package to install its sysctl file (causes the install to fail)
+# Failed to write '262144' to '/proc/sys/vm/max_map_count': Read-only file system
+	&& dpkg-divert --rename /usr/lib/sysctl.d/elasticsearch.conf \
+	\
+	&& apt-get update \
+	&& apt-get install -y --no-install-recommends "elasticsearch=$ELASTICSEARCH_DEB_VERSION" \
+	&& rm -rf /var/lib/apt/lists/*
+
+ENV PATH /usr/share/elasticsearch/bin:$PATH
+
+WORKDIR /usr/share/elasticsearch
+
+# install modules
+#RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.3.0-11-20170329.222527-2
+RUN wget https://oss.sonatype.org/content/repositories/snapshots/com/floragunn/search-guard-5/5.3.0-11-SNAPSHOT/search-guard-5-5.3.0-11-20170329.222527-2.zip \
+&&  unzip search-guard-5-5.3.0-11-20170329.222527-2.zip -d ./tmp \
+&&  mv tmp/elasticsearch /usr/share/elasticsearch/plugins/search-guard-5 \
+&&  ls -l /usr/share/elasticsearch/plugins/search-guard-5
+
+RUN set -ex \
+	&& for path in \
+		./data \
+		./logs \
+		./config \
+		./config/scripts \
+	; do \
+		mkdir -p "$path"; \
+		chown -R elasticsearch:elasticsearch "$path"; \
+	done
+
+COPY config ./config
 
 # backup conf
 RUN mkdir -p /.backup/elasticsearch/ \
@@ -20,7 +77,7 @@ ADD ./src/ /run/
 RUN chmod +x -R /run/
 
 VOLUME /usr/hare/elasticsearch/config
-VOLUME /usr/hare/elasticsearch/dara
+VOLUME /usr/hare/elasticsearch/data
 
 # env
 ENV CLUSTER_NAME="elasticsearch-default" \
