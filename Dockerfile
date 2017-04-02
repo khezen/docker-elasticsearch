@@ -3,8 +3,6 @@ FROM openjdk:8-jre
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 LABEL Description="elasticsearch searchguard search-guard"
 
-EXPOSE 9200 9300
-
 # grab gosu for easy step-down from root
 ENV GOSU_VERSION 1.7
 RUN set -x \
@@ -50,11 +48,7 @@ ENV PATH /usr/share/elasticsearch/bin:$PATH
 WORKDIR /usr/share/elasticsearch
 
 # install modules
-#RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.3.0-11-20170329.222527-2
-RUN wget https://oss.sonatype.org/content/repositories/snapshots/com/floragunn/search-guard-5/5.3.0-11-SNAPSHOT/search-guard-5-5.3.0-11-20170329.222527-2.zip \
-&&  unzip search-guard-5-5.3.0-11-20170329.222527-2.zip -d ./tmp \
-&&  mv tmp/elasticsearch /usr/share/elasticsearch/plugins/search-guard-5 \
-&&  ls -l /usr/share/elasticsearch/plugins/search-guard-5
+RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.3.0-11
 
 RUN set -ex \
 	&& for path in \
@@ -78,6 +72,8 @@ RUN chmod +x -R /run/
 
 VOLUME /usr/hare/elasticsearch/config
 VOLUME /usr/hare/elasticsearch/data
+
+EXPOSE 9200 9300
 
 # env
 ENV CLUSTER_NAME="elasticsearch-default" \
