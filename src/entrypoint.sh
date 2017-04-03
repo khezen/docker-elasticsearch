@@ -2,6 +2,8 @@
 
 set -m
 
+export NODE_NAME=$HOSTNAME
+
 /run/miscellaneous/restore_config.sh
 /run/auth/certificates/gen_all.sh
 
@@ -16,6 +18,8 @@ fi
 
 /run/miscellaneous/wait_until_started.sh
 /run/miscellaneous/index_level_settings.sh
+
+cat /usr/share/elasticsearch/config/elasticsearch.yml
 
 /run/auth/users.sh
 /run/auth/sgadmin.sh
