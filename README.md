@@ -119,11 +119,6 @@ Keystore(private key storage) password.
 If true, https is bound on 9200.
 If false, http is bound on 9200.
 
-#### TRANS_SSL | `true`
-If true, https is bound on 9300.
-If false, http is bound on 9300.
-
-
 # Configure Elasticsearch
 
 Configuration file is located in `/etc/elasticsearch/elasticsearch.yml` if you follow the same volume mapping as in the docker-compose example above.

@@ -95,8 +95,7 @@ ENV CLUSTER_NAME="elasticsearch-default" \
     CA_PWD="changeme" \
     TS_PWD="changeme" \
     KS_PWD="changeme" \
-		TRANS_SSL=true \
-		HTTP_SSL=true 
+		HTTP_SSL=true
 
 ENTRYPOINT ["/run/entrypoint.sh"]
 CMD ["elasticsearch"]

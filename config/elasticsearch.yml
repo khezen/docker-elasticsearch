@@ -20,7 +20,7 @@ http:
 
 searchguard:
     ssl.transport:
-        enabled: ${TRANS_SSL}
+        enabled: true
         enable_openssl_if_available: true
         keystore_type: JKS
         keystore_filepath: /usr/share/elasticsearch/config/searchguard/ssl/elasticsearch-keystore.jks
