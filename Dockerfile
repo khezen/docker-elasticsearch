@@ -94,7 +94,8 @@ ENV CLUSTER_NAME="elasticsearch-default" \
     HEAP_SIZE="1g" \
     CA_PWD="changeme" \
     TS_PWD="changeme" \
-    KS_PWD="changeme"
+    KS_PWD="changeme" \
+		HTTP_SSL=true
 
 ENTRYPOINT ["/run/entrypoint.sh"]
 CMD ["elasticsearch"]

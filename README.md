@@ -115,6 +115,9 @@ Truststore(public keys storage) password.
 ##### KS_PWD | `changeme`
 Keystore(private key storage) password.
 
+#### HTTP_SSL | `true`
+If true, https is bound on 9200.
+If false, http is bound on 9200.
 
 # Configure Elasticsearch
 
