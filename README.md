@@ -89,7 +89,7 @@ Which origins to allow. Note that `*` is a valid value but is considered a secur
 The node will bind to this hostname or IP address and advertise this host to other nodes in the cluster. Accepts an IP address, hostname, a special value, or an array of any combination of these.
 
 ##### HEAP_SIZE | `1g`
-Defines the maximum memory allocated to this node.
+Defines the memory available to the JVM.
 
 
 ## Security & Roles
