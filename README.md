@@ -116,8 +116,8 @@ Truststore(public keys storage) password.
 Keystore(private key storage) password.
 
 #### HTTP_SSL | `true`
-If true, https is bound on 9200.
-If false, http is bound on 9200.
+* If **true** then **https** is bound on **9200**
+* If **false** then **http** is bound on **9200**
 
 # Configure Elasticsearch
 
