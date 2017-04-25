@@ -115,7 +115,7 @@ Truststore(public keys storage) password.
 ##### KS_PWD | `changeme`
 Keystore(private key storage) password.
 
-#### HTTP_SSL | `true`
+##### HTTP_SSL | `true`
 * If **true** then **https** is bound on **9200**
 * If **false** then **http** is bound on **9200**
 
