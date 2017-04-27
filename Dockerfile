@@ -30,8 +30,8 @@ RUN set -x \
 	&& apt-get update && apt-get install -y --no-install-recommends apt-transport-https && rm -rf /var/lib/apt/lists/* \
 	&& echo 'deb https://artifacts.elastic.co/packages/5.x/apt stable main' > /etc/apt/sources.list.d/elasticsearch.list
 
-ENV ELASTICSEARCH_VERSION 5.3.0
-ENV ELASTICSEARCH_DEB_VERSION 5.3.0
+ENV ELASTICSEARCH_VERSION 5.3.1
+ENV ELASTICSEARCH_DEB_VERSION 5.3.1
 
 RUN set -x \
 	\
@@ -48,7 +48,7 @@ ENV PATH /usr/share/elasticsearch/bin:$PATH
 WORKDIR /usr/share/elasticsearch
 
 # install modules
-RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.3.0-11
+RUN bin/elasticsearch-plugin install -b com.floragunn:search-guard-5:5.3.1-12
 
 RUN set -ex \
 	&& for path in \

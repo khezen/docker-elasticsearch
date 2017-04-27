@@ -9,7 +9,7 @@ admin:
 kibana_user:
   cluster:
     - MONITOR
-    - READ
+    - CRUD
   indices:
     '?kibana':
       '*':
