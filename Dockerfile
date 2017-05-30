@@ -14,7 +14,7 @@ COPY config ./config
 RUN mkdir -p /.backup/elasticsearch/ \
 &&  mv /usr/share/elasticsearch/config /.backup/elasticsearch/config
 
-ADD ./src/ /run/
+COPY ./src/ /run/
 RUN chmod +x -R /run/
 
 VOLUME /usr/share/elasticsearch/config
@@ -26,7 +26,7 @@ EXPOSE 9200 9300
 ENV CLUSTER_NAME="elasticsearch-default" \
     MINIMUM_MASTER_NODES=1 \
     HOSTS="127.0.0.1, [::1]" \
-    NODE_NAME="node-default" \
+    NODE_NAME=$HOSTNAME \
     NODE_MASTER=true \
     NODE_DATA=true \
     NODE_INGEST=true \

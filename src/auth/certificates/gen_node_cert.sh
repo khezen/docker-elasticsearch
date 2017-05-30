@@ -1,7 +1,5 @@
 #!/bin/bash
 
-NODE_NAME=elasticsearch
-
 rm -f $NODE_NAME-keystore.jks
 rm -f $NODE_NAME.csr
 rm -f $NODE_NAME-signed.pem
@@ -18,8 +16,8 @@ keytool -genkey \
         -keypass $KS_PWD \
         -storepass $KS_PWD \
         -dname "CN=$NODE_NAME, OU=SSL, C=COM" \
-        -ext san=dns:$NODE_NAME,dns:localhost,ip:127.0.0.1,oid:1.2.3.4.5.5 
-        
+        -ext san=dns:$NODE_NAME,dns:localhost,ip:127.0.0.1,oid:1.2.3.4.5.5
+
 #oid:1.2.3.4.5.5 denote this a server node certificate for search guard
 
 echo Generating certificate signing request for node $NODE_NAME
@@ -33,7 +31,7 @@ keytool -certreq \
         -storepass $KS_PWD \
         -dname "CN=$NODE_NAME, OU=SSL, C=COM" \
         -ext san=dns:$NODE_NAME,dns:localhost,ip:127.0.0.1,oid:1.2.3.4.5.5
-        
+
 #oid:1.2.3.4.5.5 denote this a server node certificate for search guard
 
 echo Sign certificate request with CA
@@ -45,7 +43,7 @@ openssl ca \
     -extensions v3_req \
     -batch \
 	-passin pass:$CA_PWD \
-	-extensions server_ext 
+	-extensions server_ext
 
 echo "Import back to keystore (including CA chain)"
 
@@ -55,7 +53,7 @@ cat ca/chain-ca.pem $NODE_NAME-signed.pem | keytool \
     -storepass $KS_PWD \
     -noprompt \
     -alias $NODE_NAME
-    
+
 keytool -importkeystore -srckeystore $NODE_NAME-keystore.jks -srcstorepass $KS_PWD -srcstoretype JKS -deststoretype PKCS12 -deststorepass $KS_PWD -destkeystore $NODE_NAME-keystore.p12
 
 echo All done for $NODE_NAME
