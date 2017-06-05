@@ -40,8 +40,8 @@ services:
             ELASTIC_PWD: changeme
             KIBANA_PWD: changeme
         volumes:
-            - /data/elasticsearch:/usr/share/elasticsearch/data
-            - /etc/elasticsearch:/usr/share/elasticsearch/config
+            - ./data/elasticsearch:/usr/share/elasticsearch/data
+            - ./etc/elasticsearch:/usr/share/elasticsearch/config
         ports:
              - "9200:9200"
              - "9300:9300"
