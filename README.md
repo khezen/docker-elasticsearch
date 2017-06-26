@@ -5,7 +5,7 @@
 * `5.1.2`, `5.1` [(5.1/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.1/Dockerfile)
 * `5.2.2`, `5.2` [(5.2/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.2/Dockerfile)
 * `5.3.2`, `5.3` [(5.3/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.3/Dockerfile)
-* `5.4.1`, `5.4`, `5`, `latest` [(5.4/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.4/Dockerfile)
+* `5.4.2`, `5.4`, `5`, `latest` [(5.4/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.4/Dockerfile)
 
 
 # What is elasticsearch?
@@ -51,6 +51,10 @@ services:
 
 # Environment Variables
 
+##### LOG_LEVEL | `INFO`
+
+Log level from witch elasticsearch echoes logs.
+
 ## Cluster
 
 ##### CLUSTER_NAME | `elasticsearch`
@@ -65,7 +69,7 @@ List of hosts for node discovery (discovery.zen.ping.unicast.hosts)
 
 ## Node
 
-##### NODE_NAME | `$HOSTNAME`
+##### NODE_NAME | `NODE-1`
 ES cluster name.
 
 ##### NODE_MASTER | `true`

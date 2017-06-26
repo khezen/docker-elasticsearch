@@ -12,8 +12,8 @@ keytool -genkey \
         -keyalg    RSA \
         -keysize   2048 \
         -validity  712 \
-        -sigalg SHA256withRSA \
-        -keypass $KS_PWD \
+        -sigalg    SHA256withRSA \
+        -keypass   $KS_PWD \
         -storepass $KS_PWD \
         -dname "CN=$NODE_NAME, OU=SSL, C=COM" \
         -ext san=dns:$NODE_NAME,dns:localhost,ip:127.0.0.1,oid:1.2.3.4.5.5
