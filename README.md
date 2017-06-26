@@ -11,7 +11,7 @@
 # What is elasticsearch?
 
 Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases. As the heart of the Elastic Stack, it centrally stores your data so you can discover the expected and uncover the unexpected.
-This image is not including x-pack but is using [search-guard](https://github.com/floragunncom/search-guard) instead of shield for roles/users managment, which means you can deploy as many nodes as you want for free.
+This image is not including x-pack and uses [search-guard](https://github.com/floragunncom/search-guard) instead of shield to filter trusted users.
 
 [<img src="https://static-www.elastic.co/fr/assets/blt9a26f88bfbd20eb5/icon-elasticsearch-bb.svg?q=802" width="144" height="144">](https://www.elastic.co/fr/products/elasticsearch)
 
