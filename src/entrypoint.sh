@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -m
 
 # Add elasticsearch as command if needed
 if [ "${1:0:1}" = '-' ]; then
