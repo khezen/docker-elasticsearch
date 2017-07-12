@@ -2,10 +2,8 @@
 # Supported tags and respective `Dockerfile` links
 
 * `2.4.4`, `2.4`, `2` [(2.4/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/2.4/Dockerfile)
-* `5.1.2`, `5.1` [(5.1/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.1/Dockerfile)
-* `5.2.2`, `5.2` [(5.2/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.2/Dockerfile)
-* `5.3.2`, `5.3` [(5.3/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.3/Dockerfile)
-* `5.4.3`, `5.4`, `5`, `latest` [(5.4/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.4/Dockerfile)
+* `5.4.3`, `5.4` [(5.4/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.4/Dockerfile)
+* `5.5.0`, `5.5`, `5`, `latest` [(5.5/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.5/Dockerfile)
 
 
 # What is elasticsearch?
