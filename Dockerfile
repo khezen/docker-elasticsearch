@@ -28,8 +28,8 @@ RUN set -ex; \
 RUN set -x \
 	&& apt-get update && apt-get install -y --no-install-recommends apt-transport-https && rm -rf /var/lib/apt/lists/* \
 	&& echo 'deb https://artifacts.elastic.co/packages/5.x/apt stable main' > /etc/apt/sources.list.d/elasticsearch.list
-ENV ELASTICSEARCH_VERSION 5.4.3
-ENV ELASTICSEARCH_DEB_VERSION 5.4.3
+ENV ELASTICSEARCH_VERSION 5.6.3
+ENV ELASTICSEARCH_DEB_VERSION 5.6.3
 RUN set -x \
 # don't allow the package to install its sysctl file (causes the install to fail)
 # Failed to write '262144' to '/proc/sys/vm/max_map_count': Read-only file system
@@ -40,7 +40,7 @@ RUN set -x \
 ENV PATH /usr/share/elasticsearch/bin:$PATH
 WORKDIR /usr/share/elasticsearch
 # Plugins
-RUN bin/elasticsearch-plugin install -b "com.floragunn:search-guard-5:$ELASTICSEARCH_VERSION-14"
+RUN bin/elasticsearch-plugin install -b "com.floragunn:search-guard-5:$ELASTICSEARCH_VERSION-16"
 
 RUN  mkdir -p /.backup/elasticsearch/
 RUN set -ex \
