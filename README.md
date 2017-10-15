@@ -14,20 +14,9 @@ This image uses [search-guard](https://github.com/floragunncom/search-guard) ins
 
 # How To Use
 
-## [File Descriptors and MMap](https://www.elastic.co/guide/en/elasticsearch/guide/current/_file_descriptors_and_mmap.html)
-
-run the following command on your host:
-```
-sysctl -w vm.max_map_count=262144
-```
-You can set it permanently by modifying `vm.max_map_count` setting in your `/etc/sysctl.conf`.
-
-## docker engine
 ```
 docker run -d -p 9200:9200 -p 9300:9300 -e ELASTIC_PWD=changeme -e KIBANA_PWD=changeme  khezen/elasticsearch:latest   
 ```
-
-## docker-compose
 ```
 version: '2'
 services:
@@ -45,6 +34,15 @@ services:
         network_mode: bridge
         restart: always
 ```
+
+## [File Descriptors and MMap](https://www.elastic.co/guide/en/elasticsearch/guide/current/_file_descriptors_and_mmap.html)
+
+run the following command on your host:
+```
+sysctl -w vm.max_map_count=262144
+```
+You can set it permanently by modifying `vm.max_map_count` setting in your `/etc/sysctl.conf`.
+
 
 # Environment Variables
 
