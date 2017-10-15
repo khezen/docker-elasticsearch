@@ -24,7 +24,7 @@ You can set it permanently by modifying `vm.max_map_count` setting in your `/etc
 
 ## docker engine
 ```
-docker run -d -p 9200:9200 -p 9300:9300 -e ELASTIC_PWD=dockerrocks -e KIBANA_PWD=brucewayne  khezen/elasticsearch:latest   
+docker run -d -p 9200:9200 -p 9300:9300 -e ELASTIC_PWD=changeme -e KIBANA_PWD=changeme  khezen/elasticsearch:latest   
 ```
 
 ## docker-compose
