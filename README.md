@@ -1,4 +1,3 @@
-[![](https://images.microbadger.com/badges/image/khezen/elasticsearch.svg)](https://hub.docker.com/r/khezen/elasticsearch/)
 # Supported tags and respective `Dockerfile` links
 
 * `5.6.3`,`5.6`, `5`, `latest` [(5.6/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.6/Dockerfile)
