@@ -27,7 +27,7 @@ RUN apk add --no-cache -t .build-deps gnupg openssl \
   && mv elasticsearch-$ES_VERSION /elasticsearch \
   && adduser -DH -s /sbin/nologin elasticsearch \
   && echo "===> Installing search-guard..." \
-  && /elasticsearch/bin/elasticsearch-plugin install -b "com.floragunn:search-guard-6:$ELASTICSEARCH_VERSION-17.beta1" \
+  && /elasticsearch/bin/elasticsearch-plugin install -b "com.floragunn:search-guard-6:$ES_VERSION-17.beta1" \
   && echo "===> Creating Elasticsearch Paths..." \
   && for path in \
   	/elasticsearch/config \
