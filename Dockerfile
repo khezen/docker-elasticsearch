@@ -1,4 +1,4 @@
-FROM openjdk:8-jre
+FROM openjdk:8-jre-alpine
 
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 LABEL Description="elasticsearch searchguard search-guard"
