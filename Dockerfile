@@ -29,8 +29,8 @@ RUN set -x \
 	&& apt-get update && apt-get install -y --no-install-recommends apt-transport-https && rm -rf /var/lib/apt/lists/* \
 	&& echo 'deb https://artifacts.elastic.co/packages/5.x/apt stable main' > /etc/apt/sources.list.d/elasticsearch.list
 
-ENV ELASTICSEARCH_VERSION 5.6.3
-ENV ELASTICSEARCH_DEB_VERSION 5.6.3
+ENV ELASTICSEARCH_VERSION 6.0.0
+ENV ELASTICSEARCH_DEB_VERSION 6.0.0
 
 RUN set -x \
 # don't allow the package to install its sysctl file (causes the install to fail)
@@ -42,7 +42,7 @@ RUN set -x \
 ENV PATH /usr/share/elasticsearch/bin:$PATH
 WORKDIR /usr/share/elasticsearch
 # Plugins
-RUN bin/elasticsearch-plugin install -b "com.floragunn:search-guard-5:$ELASTICSEARCH_VERSION-16"
+RUN bin/elasticsearch-plugin install -b "com.floragunn:search-guard-6:$ELASTICSEARCH_VERSION-17.beta1"
 
 RUN  mkdir -p /.backup/elasticsearch/
 RUN set -ex \
