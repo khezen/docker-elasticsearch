@@ -13,12 +13,12 @@ if [ "$NODE_NAME" = "" ]; then
 fi
 
 chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
-gosu elasticsearch /run/miscellaneous/restore_config.sh
-gosu elasticsearch /run/auth/certificates/gen_all.sh
+su-exec elasticsearch /run/miscellaneous/restore_config.sh
+su-exec elasticsearch /run/auth/certificates/gen_all.sh
 
 # Run as user "elasticsearch" if the command is "elasticsearch"
 if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
-	set -- gosu elasticsearch "$@"
+	set -- su-exec elasticsearch "$@"
 	ES_JAVA_OPTS="-Des.network.host=$NETWORK_HOST -Des.logger.level=$LOG_LEVEL -Xms$HEAP_SIZE -Xmx$HEAP_SIZE"  $@ &
 else
 	$@ &
