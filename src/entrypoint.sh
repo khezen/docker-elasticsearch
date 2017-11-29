@@ -12,7 +12,7 @@ if [ "$NODE_NAME" = "" ]; then
 	export NODE_NAME=$HOSTNAME
 fi
 
-chown -R elasticsearch:elasticsearch /usr/share/elasticsearch
+chown -R elasticsearch:elasticsearch /elasticsearch
 su-exec elasticsearch /run/miscellaneous/restore_config.sh
 su-exec elasticsearch /run/auth/certificates/gen_all.sh
 
@@ -27,7 +27,7 @@ fi
 /run/miscellaneous/wait_until_started.sh
 /run/miscellaneous/index_level_settings.sh
 
-cat /usr/share/elasticsearch/config/elasticsearch.yml
+cat /elasticsearch/config/elasticsearch.yml
 
 /run/auth/users.sh
 /run/auth/sgadmin.sh

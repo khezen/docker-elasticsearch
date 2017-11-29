@@ -1,18 +1,18 @@
 #!/bin/bash
-mkdir -p /usr/share/elasticsearch/config
+mkdir -p /elasticsearch/config
 
-if [ ! -f /usr/share/elasticsearch/config/elasticsearch.yml ]; then
-    cp -r /.backup/elasticsearch/config/elasticsearch.yml /usr/share/elasticsearch/config/
+if [ ! -f /elasticsearch/config/elasticsearch.yml ]; then
+    cp -r /.backup/elasticsearch/config/elasticsearch.yml /elasticsearch/config/
 fi
 
-if [ ! -f /usr/share/elasticsearch/config/log4j2.properties ]; then
-    cp -r /.backup/elasticsearch/config/log4j2.properties /usr/share/elasticsearch/config/
+if [ ! -f /elasticsearch/config/log4j2.properties ]; then
+    cp -r /.backup/elasticsearch/config/log4j2.properties /elasticsearch/config/
 fi
 
-if [ ! -d /usr/share/elasticsearch/config/scripts ]; then
-    cp -r /.backup/elasticsearch/config/scripts /usr/share/elasticsearch/config/
+if [ ! -d /elasticsearch/config/scripts ]; then
+    cp -r /.backup/elasticsearch/config/scripts /elasticsearch/config/
 fi
 
-if [ ! -d /usr/share/elasticsearch/config/searchguard ]; then
-    cp -r /.backup/elasticsearch/config/searchguard /usr/share/elasticsearch/config/searchguard/
+if [ ! -d /elasticsearch/config/searchguard ]; then
+    cp -r /.backup/elasticsearch/config/searchguard /elasticsearch/config/searchguard/
 fi
