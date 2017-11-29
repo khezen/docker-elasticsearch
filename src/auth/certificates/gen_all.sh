@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chmod +x /usr/share/elasticsearch/plugins/search-guard-5/tools/hash.sh
+chmod +x /usr/share/elasticsearch/plugins/search-guard-6/tools/hash.sh
 cd /usr/share/elasticsearch/config/searchguard/ssl
 
 # if env changes
@@ -9,7 +9,7 @@ if [ ! -f .ca_pwd ] || [ "$CA_PWD" != $(cat .ca_pwd) ] || [ ! -f .ts_pwd ] || [ 
   /run/auth/certificates/gen_root_ca.sh
 
   /run/auth/certificates/gen_node_cert.sh
-  /run/auth/certificates/gen_client_node_cert.sh elastic 
+  /run/auth/certificates/gen_client_node_cert.sh elastic
   /run/auth/certificates/gen_client_node_cert.sh kibana
   /run/auth/certificates/gen_client_node_cert.sh logstash
   /run/auth/certificates/gen_client_node_cert.sh beats
