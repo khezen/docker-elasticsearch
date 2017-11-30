@@ -1,7 +1,7 @@
 #!/bin/bash
 
 chmod +x /elasticsearch/plugins/search-guard-6/tools/sgadmin.sh
-plugins/search-guard-6/tools/sgadmin.sh \
+/elasticsearch/plugins/search-guard-6/tools/sgadmin.sh \
 -cd /elasticsearch/config/searchguard \
 -ks /elasticsearch/config/searchguard/ssl/elastic-keystore.jks \
 -ts /elasticsearch/config/searchguard/ssl/truststore.jks \
