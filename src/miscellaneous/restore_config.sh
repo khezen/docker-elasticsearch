@@ -13,6 +13,4 @@ if [ ! -d /elasticsearch/config/scripts ]; then
     cp -r /.backup/elasticsearch/config/scripts /elasticsearch/config/
 fi
 
-if [ ! -d /elasticsearch/config/searchguard ]; then
-    cp -r /.backup/elasticsearch/config/searchguard /elasticsearch/config/searchguard/
-fi
+rsync -av --ignore-existing /.backup/elasticsearch/config/searchguard/ /elasticsearch/config/searchguard/
