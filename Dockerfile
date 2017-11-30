@@ -4,6 +4,7 @@ MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 LABEL Description="elasticsearch searchguard search-guard"
 
 ENV ES_VERSION 6.0.0
+ENV SG_VERSION "17.beta1"
 ENV DOWNLOAD_URL "https://artifacts.elastic.co/downloads/elasticsearch"
 ENV ES_TARBAL "${DOWNLOAD_URL}/elasticsearch-${ES_VERSION}.tar.gz"
 ENV ES_TARBALL_ASC "${DOWNLOAD_URL}/elasticsearch-${ES_VERSION}.tar.gz.asc"
@@ -28,7 +29,7 @@ RUN apk add --no-cache -t .build-deps gnupg \
   && mv elasticsearch-$ES_VERSION /elasticsearch \
   && adduser -DH -s /sbin/nologin elasticsearch \
   && echo "===> Installing search-guard..." \
-  && /elasticsearch/bin/elasticsearch-plugin install -b "com.floragunn:search-guard-6:$ES_VERSION-17.beta1" \
+  && /elasticsearch/bin/elasticsearch-plugin install -b "com.floragunn:search-guard-6:$ES_VERSION-$SG_VERSION" \
   && echo "===> Creating Elasticsearch Paths..." \
   && for path in \
   	/elasticsearch/config \
