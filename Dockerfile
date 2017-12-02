@@ -71,7 +71,8 @@ ENV CLUSTER_NAME="elasticsearch-default" \
     TS_PWD="changeme" \
     KS_PWD="changeme" \
 		HTTP_SSL=true \
-    LOG_LEVEL=INFO
+    LOG_LEVEL=INFO\
+    JAVA_POLICY_PATH="/elasticsearch/config/java.policy"
 
 COPY ./src/ /run/
 RUN chmod +x -R /run/

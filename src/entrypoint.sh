@@ -19,7 +19,7 @@ su-exec elasticsearch /run/auth/certificates/gen_all.sh
 # Run as user "elasticsearch" if the command is "elasticsearch"
 if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
 	set -- su-exec elasticsearch "$@"
-	ES_JAVA_OPTS="-Des.network.host=$NETWORK_HOST -Des.logger.level=$LOG_LEVEL -Xms$HEAP_SIZE -Xmx$HEAP_SIZE"  $@ &
+	ES_JAVA_OPTS="-Des.network.host=$NETWORK_HOST -Djava.security.policy=$JAVA_POLICY_PATH -Des.logger.level=$LOG_LEVEL -Xms$HEAP_SIZE -Xmx$HEAP_SIZE"  $@ &
 else
 	$@ &
 fi
