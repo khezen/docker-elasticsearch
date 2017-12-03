@@ -40,6 +40,7 @@ RUN apk add --no-cache -t .build-deps gnupg \
   chown -R elasticsearch:elasticsearch "$path"; \
   done \
   && rm -rf /tmp/* \
+  && rm /elasticsearch/config/elasticsearch.yml \
   && apk del --purge .build-deps
 
 

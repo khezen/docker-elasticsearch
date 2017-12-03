@@ -9,8 +9,5 @@ if [ ! -f /elasticsearch/config/log4j2.properties ]; then
     cp -r /.backup/elasticsearch/config/log4j2.properties /elasticsearch/config/
 fi
 
-if [ ! -d /elasticsearch/config/scripts ]; then
-    cp -r /.backup/elasticsearch/config/scripts /elasticsearch/config/
-fi
 
 rsync -av --ignore-existing /.backup/elasticsearch/config/searchguard/ /elasticsearch/config/searchguard/

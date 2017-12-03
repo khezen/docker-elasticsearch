@@ -23,22 +23,21 @@ searchguard:
         enabled: true
         enable_openssl_if_available: true
         keystore_type: JKS
-        keystore_filepath: /elasticsearch/config/searchguard/ssl/${NODE_NAME}-keystore.jks
+        keystore_filepath: searchguard/ssl/${NODE_NAME}-keystore.jks
         keystore_password: ${KS_PWD}
         truststore_type: JKS
-        truststore_filepath: /elasticsearch/config/searchguard/ssl/truststore.jks
+        truststore_filepath: searchguard/ssl/truststore.jks
         truststore_password: ${TS_PWD}
         enforce_hostname_verification: false
     ssl.http:
         enabled: ${HTTP_SSL}
-        # clientauth_mode: REQUIRE
         clientauth_mode: OPTIONAL
         enable_openssl_if_available: true
         keystore_type: JKS
-        keystore_filepath: /elasticsearch/config/searchguard/ssl/${NODE_NAME}-keystore.jks
+        keystore_filepath: searchguard/ssl/${NODE_NAME}-keystore.jks
         keystore_password: ${KS_PWD}
         truststore_type: JKS
-        truststore_filepath: /elasticsearch/config/searchguard/ssl/truststore.jks
+        truststore_filepath: searchguard/ssl/truststore.jks
         truststore_password: ${TS_PWD}
     authcz.admin_dn:
       - "CN=elastic ,OU=devops, C=COM"
