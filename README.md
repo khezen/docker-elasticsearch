@@ -1,8 +1,7 @@
 # Supported tags and respective `Dockerfile` links
 
 * `5.6.3`,`5.6`, `5` [(5.6/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.6/Dockerfile)
-* `6.0.0`,`6.0`, `6`, `latest` [(6.0/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/6.0/Dockerfile)
-
+* `6.0.0`,`6.0`, `6`, `latest` [(6.0/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/6.0/Dockerfile)[![](https://images.microbadger.com/badges/image/khezen/elasticsearch.svg)](https://hub.docker.com/r/khezen/elasticsearch/)
 
 # What is elasticsearch?
 
