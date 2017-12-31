@@ -1,0 +1,96 @@
+version: '2'
+
+volumes:
+  es_config:
+    driver: local
+  es_data:
+    driver: local
+  kibana_config:
+    driver: local
+
+networks:
+  es:
+    driver: bridge
+
+services:
+    es-data:
+        build: ../
+        environment:
+          SYSCTL_KEY: vm.max_map_count
+          SYSCTL_VALUE: '262144'
+          HEAP_SIZE: 1g
+          CLUSTER_NAME: condor-es
+          HOSTS: es-master
+          NODE_DATA: 'true'
+          NODE_INGEST: 'false'
+          NODE_MASTER: 'false'
+          NODE_NAME: ''
+          ELASTIC_PWD: changeme
+          KIBANA_PWD: changeme
+          LOGSTASH_PWD: changeme
+          BEATS_PWD: changeme
+          CA_PWD: changeme
+          TS_PWD: changeme
+          KS_PWD: changeme
+          HOSTS: 0.0.0.0, [::3]
+        volumes:
+            - es_data:/elasticsearch/data
+            - es_config:/elasticsearch/config
+        networks:
+            - es
+        restart: always
+    es-ingest:
+        build: ../
+        environment:
+          SYSCTL_KEY: vm.max_map_count
+          SYSCTL_VALUE: '262144'
+          HEAP_SIZE: 512m
+          CLUSTER_NAME: condor-es
+          HOSTS: es-master
+          NODE_DATA: 'false'
+          NODE_INGEST: 'true'
+          NODE_MASTER: 'false'
+          NODE_NAME: ''
+          ELASTIC_PWD: changeme
+          KIBANA_PWD: changeme
+          LOGSTASH_PWD: changeme
+          BEATS_PWD: changeme
+          CA_PWD: changeme
+          TS_PWD: changeme
+          KS_PWD: changeme
+          HOSTS: 0.0.0.0, [::3]
+        volumes:
+            - es_config:/elasticsearch/config
+        ports:
+             - "9300:9300"
+        networks:
+            - es
+        restart: always
+    es-master:
+        build: ../
+        environment:
+          SYSCTL_KEY: vm.max_map_count
+          SYSCTL_VALUE: '262144'
+          HEAP_SIZE: 512m
+          CLUSTER_NAME: condor-es
+          HOSTS: es-master
+          NODE_DATA: 'false'
+          NODE_INGEST: 'false'
+          NODE_MASTER: 'true'
+          NODE_NAME: ''
+          ELASTIC_PWD: changeme
+          KIBANA_PWD: changeme
+          LOGSTASH_PWD: changeme
+          BEATS_PWD: changeme
+          CA_PWD: changeme
+          TS_PWD: changeme
+          KS_PWD: changeme
+          HOSTS: 0.0.0.0, [::3]
+        volumes:
+            - es_config:/elasticsearch/config
+        ports:
+             - "9200:9200"
+        networks:
+            - es
+        restart: always
+
