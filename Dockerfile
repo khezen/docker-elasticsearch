@@ -3,7 +3,7 @@ FROM openjdk:8-jre-alpine
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 LABEL Description="elasticsearch searchguard search-guard"
 
-ENV ES_VERSION 6.1.3
+ENV ES_VERSION 6.2.2
 ENV SG_VERSION "21.0"
 ENV DOWNLOAD_URL "https://artifacts.elastic.co/downloads/elasticsearch"
 ENV ES_TARBAL "${DOWNLOAD_URL}/elasticsearch-${ES_VERSION}.tar.gz"
