@@ -3,6 +3,7 @@ FROM openjdk:8-jre-alpine
 MAINTAINER Guillaume Simonneau <simonneaug@gmail.com>
 LABEL Description="elasticsearch searchguard search-guard"
 
+ENV ES_TMPDIR "/es_tmp"
 ENV ES_VERSION 6.2.2
 ENV SG_VERSION "21.0"
 ENV DOWNLOAD_URL "https://artifacts.elastic.co/downloads/elasticsearch"
@@ -17,13 +18,13 @@ RUN apk add --no-cache -t .build-deps gnupg \
   && cd /tmp \
   && echo "===> Install Elasticsearch..." \
   && curl -o elasticsearch.tar.gz -Lskj "$ES_TARBAL"; \
-	if [ "$ES_TARBALL_ASC" ]; then \
-		curl -o elasticsearch.tar.gz.asc -Lskj "$ES_TARBALL_ASC"; \
-		export GNUPGHOME="$(mktemp -d)"; \
-		gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$GPG_KEY"; \
-		gpg --batch --verify elasticsearch.tar.gz.asc elasticsearch.tar.gz; \
-		rm -r "$GNUPGHOME" elasticsearch.tar.gz.asc; \
-	fi; \
+  if [ "$ES_TARBALL_ASC" ]; then \
+    curl -o elasticsearch.tar.gz.asc -Lskj "$ES_TARBALL_ASC"; \
+    export GNUPGHOME="$(mktemp -d)"; \
+    gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$GPG_KEY"; \
+    gpg --batch --verify elasticsearch.tar.gz.asc elasticsearch.tar.gz; \
+    rm -r "$GNUPGHOME" elasticsearch.tar.gz.asc; \
+  fi; \
   tar -xf elasticsearch.tar.gz \
   && ls -lah \
   && mv elasticsearch-$ES_VERSION /elasticsearch \
