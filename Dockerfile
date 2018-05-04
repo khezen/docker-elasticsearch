@@ -3,7 +3,7 @@ FROM openjdk:8-jre-alpine
 LABEL maintainer="Guillaume Simonneau <simonneaug@gmail.com>"
 LABEL description="elasticsearch search-guard"
 
-ENV ES_TMPDIR "/es_tmp"
+ENV ES_TMPDIR "/tmp"
 ENV ES_VERSION 6.2.2
 ENV SG_VERSION "21.0"
 ENV DOWNLOAD_URL "https://artifacts.elastic.co/downloads/elasticsearch"
@@ -11,12 +11,12 @@ ENV ES_TARBAL "${DOWNLOAD_URL}/elasticsearch-${ES_VERSION}.tar.gz"
 ENV ES_TARBALL_ASC "${DOWNLOAD_URL}/elasticsearch-${ES_VERSION}.tar.gz.asc"
 ENV GPG_KEY "46095ACC8548582C1A2699A9D27DMAINTAINER666CD88E42B4"
 ENV PATH /elasticsearch/bin:$PATH
-RUN chown elasticsearch -R "$ES_TMPDIR"
 
 # Install Elasticsearch.
 RUN apk add --no-cache --update bash ca-certificates su-exec util-linux curl openssl rsync
 RUN apk add --no-cache -t .build-deps gnupg \
-  && cd /tmp \
+  && mkdir /install && \
+  && cd /install \
   && echo "===> Install Elasticsearch..." \
   && curl -o elasticsearch.tar.gz -Lskj "$ES_TARBAL"; \
   if [ "$ES_TARBALL_ASC" ]; then \
@@ -41,7 +41,7 @@ RUN apk add --no-cache -t .build-deps gnupg \
   mkdir -p "$path"; \
   chown -R elasticsearch:elasticsearch "$path"; \
   done \
-  && rm -rf /tmp/* \
+  && rm -rf /install \
   && rm /elasticsearch/config/elasticsearch.yml \
   && apk del --purge .build-deps
 
