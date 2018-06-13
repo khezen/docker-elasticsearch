@@ -1,3 +1,12 @@
+# DEPREATED
+
+This image is deprecated in favor of the [offical elasticsearch image](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html).
+
+Since version 6.3.0, elastic released X-Pack under Apache 2.0 and stated it would remain in the stdandard release forever.
+
+[Ref](https://www.elastic.co/blog/elastic-stack-6-3-0-released?blade=linkedin&hulk=social)
+
+
 # Supported tags and respective `Dockerfile` links
 
 * `5.6.3`,`5.6`, `5` [(5.6/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.6/Dockerfile)
