@@ -1,4 +1,4 @@
-# DEPREATED
+# DEPRECATED
 
 This image is deprecated in favor of the [offical elasticsearch image](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html).
 
