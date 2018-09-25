@@ -15,7 +15,7 @@ ENV PATH /elasticsearch/bin:$PATH
 # Install Elasticsearch.
 RUN apk add --no-cache --update bash ca-certificates su-exec util-linux curl openssl rsync
 RUN apk add --no-cache -t .build-deps gnupg \
-  && mkdir /install && \
+  && mkdir /install \
   && cd /install \
   && echo "===> Install Elasticsearch..." \
   && curl -o elasticsearch.tar.gz -Lskj "$ES_TARBAL"; \
