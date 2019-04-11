@@ -19,6 +19,10 @@ http:
     allow-origin: ${HTTP_CORS_ALLOW_ORIGIN}
 
 searchguard:
+    enterprise_modules_enabled: ${SG_ENTERPRISE_ENABLED}
+    restapi:
+        roles_enabled:
+          - "admin"
     ssl.transport:
         enabled: true
         enable_openssl_if_available: true
