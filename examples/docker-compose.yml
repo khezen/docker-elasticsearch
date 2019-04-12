@@ -1,7 +1,7 @@
 version: '2'
 services:
     elasticsearch:
-        image: khezen/elasticsearch:6.5.4
+        build: ..
         environment:
             NODE_NAME: example
             ELASTIC_PWD: changeme
