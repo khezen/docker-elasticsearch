@@ -5,15 +5,18 @@ pingElasticSuccess() {
     [[ $status != ${failurecode} ]] && [[ $status != 000 ]]
 }
 
-RET=1
-http="http"
-if [ "$HTTP_SSL" = "true" ]; then
-  http="https"
-fi
-while [[ RET -ne 0 ]]; do
-    echo "Stalling for Elasticsearch..."
-    pingElasticSuccess && RET=0
-    RET=$?
-    sleep 5
-done
+pollElasticsearch(){
+  local ret=1
+  local http="http"
+  if [ "$HTTP_SSL" = "true" ]; then
+    http="https"
+  fi
+  while [[ ret -ne 0 ]]; do
+      echo "Stalling for Elasticsearch..."
+      pingElasticSuccess && ret=0
+      sleep 5
+  done
+}
+
+ pollElasticsearch
 

@@ -5,7 +5,8 @@
 * `5.6.3`,`5.6`, `5` [(5.6/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/5.6/Dockerfile)
 * `6.1.3`,`6.1` [(6.1/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/6.1/Dockerfile)
 * `6.2.2`,`6.2` [(6.2/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/6.2/Dockerfile)
-* `6.5.4`,`6.5`, `6`, `latest` [(6.5/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/6.5/Dockerfile)[![img not found](https://images.microbadger.com/badges/image/khezen/elasticsearch.svg)](https://hub.docker.com/r/khezen/elasticsearch/)
+* `6.5.4`,`6.5` [(6.5/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/6.5/Dockerfile)
+* `6.7.1`,`6.7`, `6`, `latest` [(6.7/Dockerfile)](https://github.com/Khezen/docker-elasticsearch/blob/6.7/Dockerfile)[![img not found](https://images.microbadger.com/badges/image/khezen/elasticsearch.svg)](https://hub.docker.com/r/khezen/elasticsearch/)
 
 ## What is elasticsearch
 

@@ -16,8 +16,6 @@ cat /elasticsearch/config/elasticsearch.yml
 /run/auth/certificates/gen_all.sh
 
 chown -R elasticsearch:elasticsearch /elasticsearch
-# chown -R 700 /elasticsearch/config
-# chown -R 600 /elasticsearch/config/searchguard
 
 # Run as user "elasticsearch" if the command is "elasticsearch"
 if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
