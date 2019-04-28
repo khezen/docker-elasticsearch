@@ -30,7 +30,7 @@ RUN chmod +x -R /run/
 FROM openjdk:8-jre-alpine
 LABEL maintainer="Guillaume Simonneau <simonneaug@gmail.com>"
 LABEL description="elasticsearch search-guard"
-RUN apk add --no-cache --update bash ca-certificates su-exec  openssl rsync
+RUN apk add --no-cache --update bash ca-certificates su-exec  openssl rsync curl
 RUN apk add --no-cache -t gnupg
 COPY --from=build /elasticsearch /elasticsearch
 COPY --from=build /run /run
