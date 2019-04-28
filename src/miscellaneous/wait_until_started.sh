@@ -2,7 +2,7 @@
 RET=1
 
 http="http"
-if [ $HTTP_SSL = true ]; then
+if [ "$HTTP_SSL" = "true" ]; then
   http="https"
 fi
 while [[ RET -ne 0 ]]; do

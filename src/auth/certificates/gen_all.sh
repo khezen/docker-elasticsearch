@@ -4,7 +4,7 @@ chmod +x /elasticsearch/plugins/search-guard-6/tools/hash.sh
 cd /elasticsearch/config/searchguard/ssl
 
 # if env changes
-if [ ! -f .ca_pwd ] || [ "$CA_PWD" != $(cat .ca_pwd) ] || [ ! -f .ts_pwd ] || [ "$TS_PWD" != $(cat .ts_pwd) ] || [ ! -f .ks_pwd ] || [ "$KS_PWD" != $(cat .ks_pwd) ]; then
+if [ ! -f .ca_pwd ] || [ "$CA_PWD" != "$(cat .ca_pwd)" ] || [ ! -f .ts_pwd ] || [ "$TS_PWD" != "$(cat .ts_pwd)" ] || [ ! -f .ks_pwd ] || [ "$KS_PWD" != "$(cat .ks_pwd)" ]; then
   /run/auth/certificates/init.sh
   /run/auth/certificates/gen_root_ca.sh
 
