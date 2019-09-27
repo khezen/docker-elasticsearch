@@ -2,7 +2,7 @@
 
 index_level_settings(){
   http="http"
-  if [ $HTTP_SSL ]; then
+  if [ "$HTTP_SSL" = "true" ]; then
     http="https"
   fi
 
